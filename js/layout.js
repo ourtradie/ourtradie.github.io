@@ -80,4 +80,6 @@ $(document).ready(function () {
     });
 
     prettyPrint();
+
+	$('header').scrollToFixed();
 });
