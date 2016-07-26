@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ourtradie Property Manager API</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+ 
+  	<div class="pull-left">
+    	<h1><a href="javascript:"><img src="img/icon.png" alt="ourtradie Property Manager API" /> <span></span></a></h1>
+    </div>
+    
+    <div class="pull-right" style="display:none">
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header">Ourtradie Property Manager API</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav">
+      <li><strong>Getting Started</strong></li>
+      <li><a href="#welcome" class="cc-active">Welcome</a></li>
+      <li><a href="#overview" class="cc-active">Overview</a></li>
+      <li><a href="#features" class="cc-active">Features</a></li>
+      <li><a href="#license" class="cc-active">License</a></li>
+      <li class="separator"></li>
+      <li><strong>API Reference</strong></li>
+      <li><a href="#create_account" class="cc-active">Create Account</a></li>
+      <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
+      <li><a href="#authorization" class="cc-active">Authorization</a></li>
+      <li><a href="#access_token" class="cc-active">Access Token</a></li>
+      <li><a href="#rating_icons" class="cc-active">Rating Icons</a></li>
+      <li><a href="#rating_titles" class="cc-active">Rating Titles</a></li>
+      <li><a href="#bar_colors" class="cc-active">Bar Colors</a></li>
+	  <li><strong>Methods</strong></li>
+	  <li><a href="#syncproperties" class="cc-active">SyncProperties</a></li>
+      <li><a href="#jobsretrieve" class="cc-active">JobsRetrieve</a></li>
+      <li><a href="#updatejobs" class="cc-active">UpdateJobs</a></li>
+	  <li><strong>Downloads</strong></li>
+	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
+    </ul>
+    <div class="docs-content">
+      <h2> Getting Started</h2>
+      <h3 id="welcome"> Welcome</h3>
+      <p> Ourtradie provides solutions for online tradesmen and property managers. 
+		It doesn't really matter what type of work or service you are selling or buying on the Internet:  from building 
+		to electrical work and even dog grooming services. This program will help both tradies and their customers 
+		feel empowered and choose the best options to suit their business purposes. We help tradies, property managers, 
+		tenants and landlords work through maintenance tasks more efficiently together. </p>
+      
+      <h3 id="overview"> Overview</h3>
+      <ul>
+        <li>Use Opineo to conduct pre-release surveys before launching new products or services</li>
+        <li>Analyze new trends in the industry</li>
+        <li>Run crowd-sourced campaigns with Opineo to mature new ideas, website designs or
+          logos</li>
+        <li>Conduct popularity surveys with free Opineo widget</li>
+        <li>Create and host polling surveys with Opineo</li>
+      </ul>
+      <h3 id="features"> Features</h3>
+      <ul>
+        <li>Facility to customize to match your website theme</li>
+        <li>Detailed and Compact view options</li>
+        <li>Comprehensive options to customize animation, colors, orientation and style</li>
+        <li>All the power and flexibility of jQuery</li>
+        <li>Easy install; 100% integration</li>
+        <li>Facility to customize rating icons</li>
+      </ul>
+      <h3 id="license"> License</h3>
+      <p> This Feedback Collection and Polling widget is free for personal and commercial
+        projects as long as you are providing a link back to this page. If you don’t want
+        to provide a link back, simply contribute to the development and improvement of
+        this tool. To contribute to this and many other interesting projects, go to Support
+        Efforts and become a patron.</p>
+      <hr>
+      <h2> Customizing Opineo</h2>
+      <p> Before you make any cusomization or even start using Opineo create a 'div' element
+        and assign it some id. Now add references to necessary Javascrip files e.g.</p>
+      <ul>
+        <li>A reference to latest jQuery library </li>
+        <li>A reference to Opineo script file sudo nano opineo.js</li>
+      </ul>
+      <p> The following customization options are available in Opineo:</p>
+      <h3 id="view_type"> View Type</h3>
+      <ul>
+        <li>Detailed View</li>
+      </ul>
+     
+      <pre class="prettyprint">&lt;script&gt;
+      	$(document).ready(function (){
+        $('#DefaultOptions').opineo('results.php', {curvalue:3,
+            view: 'detailed',
+            animation_speed: 'super',
+            show_total_votes_counter: false,
+            show_overall_rating: true});
+         })
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Compact View</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+	$(document).ready(function (){
+	$('#CompactView').opineo('results.php',
+    	    {curvalue:3, view: 'compact',
+    	    animation_speed: 'super'});
+	})
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Mini View</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#MiniView').opineo('results.php', {curvalue:0, view: 'mini', callback: myCallback});
+    })	
+&lt;/script&gt;</pre>
+      <h3 id="animation_style"> Animation Style</h3>
+      <ul>
+        <li>Slow</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'slow'});
+    })	
+&lt;/script&gt; </pre>
+      <ul>
+        <li>Medium</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'mild'});
+    })	
+&lt;/script&gt; </pre>
+      <ul>
+        <li>Fast</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'fast'});
+    })	
+ &lt;/script&gt;</pre>
+      <ul>
+        <li>Super Fast</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'super'});
+    })	
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Ultra Fast</li>
+      </ul>
+      <pre class="prettyprint"> &lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'ultra fast'});
+    })	
+&lt;/script&gt; </pre>
+      <h3 id="bars_text"> Bars Text</h3>
+      <ul>
+        <li>Show</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:true});
+    })	
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Hide</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:false});
+    })	
+ &lt;/script&gt;</pre>
+      <h3 id="vote_counter"> Vote Counter</h3>
+      <ul>
+        <li>Show</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', show_votes_counter:true});
+    })	
+&lt;/script&gt; </pre>
+      <ul>
+        <li>Hide</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:false});
+    })	
+&lt;/script&gt;</pre>
+      <h3 id="rating_icons"> Rating Icons</h3>
+      <ul>
+        <li>Colored</li>
+        <li>Grey</li>
+      </ul>
+      <h3 id="rating_titles"> Rating Titles</h3>
+      <ul>
+        <li>Text For First Star</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Hate It'});
+    })	
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Text For Second Star</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_2_text:'Don't Like It'});
+    })	
+&lt;/script&gt; </pre>
+      <ul>
+        <li>Text For Third Star</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Its OK'});
+    })	
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Text For Fourth Star</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Like It'});
+    })	
+&lt;/script&gt;</pre>
+      <ul>
+        <li>Text For Fifth Star</li>
+      </ul>
+      <pre class="prettyprint">&lt;script&gt;
+    $(document).ready(function (){
+    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Love It'});
+    })	
+&lt;/script&gt;</pre>
+      <h3 id="bar_colors"> Bar Colors</h3>
+      <ul>
+        <li>Colors of Red Bar</li>
+        <li>Colors of Yellow Bar</li>
+        <li>Colors of Green Bar</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="vibrant centered">
+  <div class="">
+    <h4> This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a>.</h4>
+  </div>
+</section>
+<footer>
+  <div class="">
+    <p> &copy; OurTradie Pty. Ltd.</p>
+  </div>
+</footer>
+</div>
+<script src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/prettify/prettify.js"></script> 
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+</body>
+</html>
