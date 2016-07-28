@@ -6,7 +6,7 @@
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Ourtradie Property Manager API</title>
+<title>OurTradie Property Manager API</title>
 <link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
 <link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
         type="text/css">
@@ -18,7 +18,7 @@
 <nav>
  
   	<div class="pull-left">
-    	<h1><a href="javascript:"><img src="img/icon.png" alt="ourtradie Property Manager API" /> <span></span></a></h1>
+    	<h1><a href="javascript:"><img src="img/icon.png" alt="OurTradie Property Manager API" /> <span></span></a></h1>
     </div>
     
     <div class="pull-right" style="display:none">
@@ -27,7 +27,7 @@
 </nav>
 <header>
   <div class="container">
-    <h2 class="lone-header">Ourtradie Property Manager API</h2>
+    <h2 class="lone-header">OurTradie Property Manager API</h2>
   </div>
 </header>
 <section>
@@ -36,17 +36,12 @@
       <li><strong>Getting Started</strong></li>
       <li><a href="#welcome" class="cc-active">Welcome</a></li>
       <li><a href="#overview" class="cc-active">Overview</a></li>
-      <li><a href="#features" class="cc-active">Features</a></li>
-      <li><a href="#license" class="cc-active">License</a></li>
       <li class="separator"></li>
       <li><strong>API Reference</strong></li>
-      <li><a href="#create_account" class="cc-active">Create Account</a></li>
       <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
       <li><a href="#authorization" class="cc-active">Authorization</a></li>
       <li><a href="#access_token" class="cc-active">Access Token</a></li>
-      <li><a href="#rating_icons" class="cc-active">Rating Icons</a></li>
-      <li><a href="#rating_titles" class="cc-active">Rating Titles</a></li>
-      <li><a href="#bar_colors" class="cc-active">Bar Colors</a></li>
+	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
 	  <li><strong>Methods</strong></li>
 	  <li><a href="#syncproperties" class="cc-active">SyncProperties</a></li>
       <li><a href="#jobsretrieve" class="cc-active">JobsRetrieve</a></li>
@@ -57,7 +52,7 @@
     <div class="docs-content">
       <h2> Getting Started</h2>
       <h3 id="welcome"> Welcome</h3>
-      <p> Ourtradie provides solutions for online tradesmen and property managers. 
+      <p> OurTradie provides solutions for online tradesmen and property managers. 
 		It doesn't really matter what type of work or service you are selling or buying on the Internet:  from building 
 		to electrical work and even dog grooming services. This program will help both tradies and their customers 
 		feel empowered and choose the best options to suit their business purposes. We help tradies, property managers, 
@@ -65,196 +60,187 @@
       
       <h3 id="overview"> Overview</h3>
       <ul>
-        <li>Use Opineo to conduct pre-release surveys before launching new products or services</li>
-        <li>Analyze new trends in the industry</li>
-        <li>Run crowd-sourced campaigns with Opineo to mature new ideas, website designs or
-          logos</li>
-        <li>Conduct popularity surveys with free Opineo widget</li>
-        <li>Create and host polling surveys with Opineo</li>
+        <li><strong>Import your properties:</strong> Export your property, tradie, landlord and tenant information from your property management software and import it into OurTradie using our API.</li>
+		<li><strong>Create profile:</strong> Add your Property management group and your staff.</li>
+		<li><strong>Create a job:</strong> Send a job to a tradie as a unquoted work offer or request quotes from your tradies. If you don’t have three tradies of the same type available, send the job out through the OurTradie network to access other qualified tradies. The first three tradies who respond get to quote.</li>
+		<li><strong>Review & Selection:</strong> Review the response, approve a quote or pass on the selected quotes on to the landlord for approval</li>
+		<li><strong>Import jobs to your software:</strong> Through our API can retrieve approved job invoices as XML data and import into your software.</li>
       </ul>
-      <h3 id="features"> Features</h3>
+
+	  <h2> API Reference</h2>
+      <h3 id="getting_access"> Getting Access</h3>
       <ul>
-        <li>Facility to customize to match your website theme</li>
-        <li>Detailed and Compact view options</li>
-        <li>Comprehensive options to customize animation, colors, orientation and style</li>
-        <li>All the power and flexibility of jQuery</li>
-        <li>Easy install; 100% integration</li>
-        <li>Facility to customize rating icons</li>
+		<li>To access PM API, <a href="https://propertymanager.ourtradie.com.au/index.php?option=com_jentlausers&amp;view=jentlauser&amp;show=register&amp;id=2434&amp;Itemid=167">complete your user account as office manager</a>.</li>
+        <li>After you have created your account, sign in to <a href="https://propertymanager.ourtradie.com.au">pm assistant site</a> generate your api access via <strong>Settings &gt; API Access</strong></li>
+		<img src="img/API_Access.png" alt="API Access" style="max-width: 800px;margin-top: 10px;" />
+		<li>You must provide valid url in Redirect URL field, api responses will be sent to redirect url.</li>
+		<li>Press Generate New Key button to get your client id & client secret key.</li>
       </ul>
-      <h3 id="license"> License</h3>
-      <p> This Feedback Collection and Polling widget is free for personal and commercial
-        projects as long as you are providing a link back to this page. If you don’t want
-        to provide a link back, simply contribute to the development and improvement of
-        this tool. To contribute to this and many other interesting projects, go to Support
-        Efforts and become a patron.</p>
-      <hr>
-      <h2> Customizing Opineo</h2>
-      <p> Before you make any cusomization or even start using Opineo create a 'div' element
-        and assign it some id. Now add references to necessary Javascrip files e.g.</p>
-      <ul>
-        <li>A reference to latest jQuery library </li>
-        <li>A reference to Opineo script file sudo nano opineo.js</li>
-      </ul>
-      <p> The following customization options are available in Opineo:</p>
-      <h3 id="view_type"> View Type</h3>
-      <ul>
-        <li>Detailed View</li>
-      </ul>
-     
-      <pre class="prettyprint">&lt;script&gt;
-      	$(document).ready(function (){
-        $('#DefaultOptions').opineo('results.php', {curvalue:3,
-            view: 'detailed',
-            animation_speed: 'super',
-            show_total_votes_counter: false,
-            show_overall_rating: true});
-         })
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Compact View</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-	$(document).ready(function (){
-	$('#CompactView').opineo('results.php',
-    	    {curvalue:3, view: 'compact',
-    	    animation_speed: 'super'});
-	})
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Mini View</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#MiniView').opineo('results.php', {curvalue:0, view: 'mini', callback: myCallback});
-    })	
-&lt;/script&gt;</pre>
-      <h3 id="animation_style"> Animation Style</h3>
-      <ul>
-        <li>Slow</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'slow'});
-    })	
-&lt;/script&gt; </pre>
-      <ul>
-        <li>Medium</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'mild'});
-    })	
-&lt;/script&gt; </pre>
-      <ul>
-        <li>Fast</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'fast'});
-    })	
- &lt;/script&gt;</pre>
-      <ul>
-        <li>Super Fast</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'super'});
-    })	
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Ultra Fast</li>
-      </ul>
-      <pre class="prettyprint"> &lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', animation_speed:'ultra fast'});
-    })	
-&lt;/script&gt; </pre>
-      <h3 id="bars_text"> Bars Text</h3>
-      <ul>
-        <li>Show</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:true});
-    })	
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Hide</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:false});
-    })	
- &lt;/script&gt;</pre>
-      <h3 id="vote_counter"> Vote Counter</h3>
-      <ul>
-        <li>Show</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', show_votes_counter:true});
-    })	
-&lt;/script&gt; </pre>
-      <ul>
-        <li>Hide</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', votes_label:false});
-    })	
-&lt;/script&gt;</pre>
-      <h3 id="rating_icons"> Rating Icons</h3>
-      <ul>
-        <li>Colored</li>
-        <li>Grey</li>
-      </ul>
-      <h3 id="rating_titles"> Rating Titles</h3>
-      <ul>
-        <li>Text For First Star</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Hate It'});
-    })	
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Text For Second Star</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_2_text:'Don't Like It'});
-    })	
-&lt;/script&gt; </pre>
-      <ul>
-        <li>Text For Third Star</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Its OK'});
-    })	
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Text For Fourth Star</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Like It'});
-    })	
-&lt;/script&gt;</pre>
-      <ul>
-        <li>Text For Fifth Star</li>
-      </ul>
-      <pre class="prettyprint">&lt;script&gt;
-    $(document).ready(function (){
-    $('#opineo').opineo('results.php', {curvalue:0, view: 'mini', star_1_text:'Love It'});
-    })	
-&lt;/script&gt;</pre>
-      <h3 id="bar_colors"> Bar Colors</h3>
-      <ul>
-        <li>Colors of Red Bar</li>
-        <li>Colors of Yellow Bar</li>
-        <li>Colors of Green Bar</li>
-      </ul>
+
+	  <h3 id="authorization"> Request an authorization code</h3>
+      <ul style="list-style:outside none none">
+		<li> We are using <strong style="font-family:arial;">OAuth 2.0 </strong> for api authorization process.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/authorize</code></pre></td>
+				</tr>
+			</table>
+		</li>
+        <li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>response_type</td><td>The value of this field should always be:&nbsp; code</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>authorize</td><td>An integer value should be pass.</td><td>Yes</td></tr>
+					<tr>
+						<td>redirect_uri</td>
+						<td><p>The URI your responses will be sent back to after authorization.&nbsp; This value must match with redirect url you specied on api access.</td>
+						<td>Yes</td>
+					</tr>
+					<tr>
+						<td>state</td>
+						<td><p>A unique string value of your choice that is
+						hard to guess. Used to prevent <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" rel="nofollow" target="_blank">CSRF</a>.&nbsp;
+						<br> e.g. state=DCEeFWf45A53sdfKef424</p></td><td>Yes</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li> <strong>Sample Request Url:</strong> </li>
+		<li class="arial"> https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz </li>
+		<li> While calling above url, you asked to login with your office manager account on api. Then you will see api authorization page.</li>
+		<li> <img src="img/authorization_pg.png" alt="API Authorization" style="margin-top: 10px;" /> </li>
+		<li> Press Authorize button, you will get following authorization code response on your redirect url.</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>code</td><td>Authorization code from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>state</td><td>The unique string value you passed on request.</td></tr>
+				</tbody>
+			</table>
+		</li>
+      </ul>     
+		
+	  <h3 id="access_token"> Getting access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass authorization code to Token method to get api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>code</td><td>Use the code got from authorize method.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using authorization code to get token, value should always be:&nbsp; authorization_code</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="refresh_token"> Using refresh token to get access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass refresh token instead of authorization code to Token method to obtain api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>refresh_token</td><td>Use the refresh_token previously got.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using refresh token to get token, value should always be:&nbsp; refresh_token</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="syncproperties"> Import Agency Datas to OurTradie</h3>
+	  <ul style="list-style:outside none none">
+		<li> Using this method you could import all your agency property managers, properties, tenants, landlords & creditors to ourtradie. On the first import you should
+			pass all your properties & userdetails to ourtradie. After that send only modified properties or creditor informations. </li>
+		<li> Also you could send daily property statistics datas like rent, paid to, lease start, lease end, vacating date, rent arrear days, arrear amount. Using this details we
+			will send arrear notifications to tenants. </li>
+		<li> In this method you should pass datas as xml string or xml file. Please refer below details for XML format.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/SyncProperties</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<span class="arial">Access token should be included in request header with “Authorization: Bearer {access token}”</span>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>XMLData</td><td>Agency datas passed as xml string.</td><td>-</td></tr>
+					<tr><td>XMLFile</td><td>Upload xml file instead of xml string. Pass XMLData or XMLFile, don't send both param in single call we accept any one of data only. </td><td>-</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>success</td><td>OK</td></tr>
+					<tr><td>data</td><td>XML data successfully added to background process.</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error type. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+      
     </div>
   </div>
 </section>
