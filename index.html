@@ -1,31 +1,838 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>OurTradie Property Manager API</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet"
+        type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
 <body>
-<p>This topic comprises how to access the API for PM site.</p>
-<h4><span style="font-size:16px;"><span style="color: rgb(51, 102, 255); line-height: 1;">API - Application Program Interface</span></span></h4>
-<p>API is&nbsp;<span style="line-height: 1.5;">a set of functions and procedures that allow the creation of applications which access the features or data of an Operating System.</span></p>
-<p><span style="line-height: 1.5;">Here</span></p>
-<pre><span style="font-size:14px;"><span style="font-family: verdana,geneva,sans-serif;"><span style="line-height: 1.5;">You can access API from the Client, you can import the properties from the client </span></span></span>
-<span style="font-size:14px;"><span style="font-family: verdana,geneva,sans-serif;"><span style="line-height: 1.5;">Propertymanager works on the property and export the jobs to the client</span></span></span></pre>
-<p><strong style="line-height: 1.5;"><span style="color:#ff0000;">(!) </span></strong><span style="line-height: 1.5;">Officemanager user can only access the API and do the essential operation.</span></p>
-<h4><span style="line-height: 1.5;">Propertymanager API Access</span></h4>
-<p><span style="line-height: 1.5;">The following procedures guides you how to access API for PM site</span></p>
-<ol>
-	<li><a href="mks://localhost/PropertyManager_API/Overview" title="PropertyManager_API/Overview"><span style="line-height: 1.5;">Overview</span></a></li>
-	<li><a href="mks://localhost/PropertyManager_API/API_Reference" title="PropertyManager_API/API_Reference"><span style="line-height: 1.5;">API Reference</span></a></li>
-</ol>
-<ul>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/API_Reference/Getting_API_Access" rel="internal" title="PropertyManager_API/API_Reference/Getting_API_Access">Getting API Access</a></li>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/API_Reference/Authorization" rel="internal" title="PropertyManager_API/API_Reference/Authorization">Authorization</a></li>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/API_Reference/Token" rel="internal" title="PropertyManager_API/API_Reference/Token">Access Token</a></li>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/API_Reference/Sync_properties_API" rel="internal" title="PropertyManager_API/API_Reference/Sync_properties_API">Syn Properties</a></li>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/Jobs_Retrieve" rel="internal" title="PropertyManager_API/Jobs_Retrieve">Jobs Retrieve</a></li>
-	<li style="margin-left: 40px;"><a href="/PropertyManager_API/API_Reference/Jobs_Update" rel="internal" title="/PropertyManager_API/API_Reference/Jobs_Update">Jobs Update</a></li>
-</ul>
-<p style="margin-left: 40px;">&nbsp;</p>
-<hr />
-<p style="margin-left: 40px;">&nbsp;</p>
-<p>Go back to <a href="mks://localhost/" title="http://documentation.jentla.com/">Jentla Wiki </a>page</p>
+<div class="wrapper">
+<nav>
+ 
+  	<div class="pull-left">
+    	<h1><a href="javascript:"><img src="img/icon.png" alt="OurTradie Property Manager API" /> <span></span></a></h1>
+    </div>
+    
+    <div class="pull-right" style="display:none">
+    </div>
 
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header">OurTradie Property Manager API</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav">
+      <li><strong>Getting Started</strong></li>
+      <li><a href="#welcome" class="cc-active">Welcome</a></li>
+      <li><a href="#overview" class="cc-active">Overview</a></li>
+      <li class="separator"></li>
+      <li><strong>API Reference</strong></li>
+      <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
+      <li><a href="#authorization" class="cc-active">Authorization</a></li>
+      <li><a href="#access_token" class="cc-active">Access Token</a></li>
+	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
+	  <li><strong>Methods</strong></li>
+	  <li><a href="#syncproperties" class="cc-active">SyncProperties</a></li>
+      <li><a href="#jobsretrieve" class="cc-active">JobsRetrieve</a></li>
+      <li><a href="#updatejobs" class="cc-active">UpdateJobs</a></li>
+	  <li><strong>Downloads</strong></li>
+	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
+	  <li><a href="#syncproperties-xml" class="cc-active">SyncProperties XML Format</a></li>
+	  <li><a href="#jobsretrieve-xml" class="cc-active">JobsRetrieve XML Format</a></li>
+    </ul>
+    <div class="docs-content">
+      <h2> Getting Started</h2>
+      <h3 id="welcome"> Welcome</h3>
+      <p> OurTradie provides solutions for online tradesmen and property managers. 
+		It doesn't really matter what type of work or service you are selling or buying on the Internet:  from building 
+		to electrical work and even dog grooming services. This program will help both tradies and their customers 
+		feel empowered and choose the best options to suit their business purposes. We help tradies, property managers, 
+		tenants and landlords work through maintenance tasks more efficiently together. </p>
+      
+      <h3 id="overview"> Overview</h3>
+      <ul>
+        <li><strong>Import your properties:</strong> Export your property, tradie, landlord and tenant information from your property management software and import it into OurTradie using our API.</li>
+		<li><strong>Create profile:</strong> Add your Property management group and your staff.</li>
+		<li><strong>Create a job:</strong> Send a job to a tradie as a unquoted work offer or request quotes from your tradies. If you don’t have three tradies of the same type available, send the job out through the OurTradie network to access other qualified tradies. The first three tradies who respond get to quote.</li>
+		<li><strong>Review & Selection:</strong> Review the response, approve a quote or pass on the selected quotes on to the landlord for approval</li>
+		<li><strong>Import jobs to your software:</strong> Through our API can retrieve approved job invoices as XML data and import into your software.</li>
+      </ul>
+
+	  <h2> API Reference</h2>
+      <h3 id="getting_access"> Getting Access</h3>
+      <ul>
+		<li>To access PM API, <a href="https://propertymanager.ourtradie.com.au/index.php?option=com_jentlausers&amp;view=jentlauser&amp;show=register&amp;id=2434&amp;Itemid=167">complete your user account as office manager</a>.</li>
+        <li>After you have created your account, sign in to <a href="https://propertymanager.ourtradie.com.au">pm assistant site</a> generate your api access via <strong>Settings &gt; API Access</strong></li>
+		<img src="img/API_Access.png" alt="API Access" style="max-width: 800px;margin-top: 10px;" />
+		<li>You must provide valid url in Redirect URL field, api responses will be sent to redirect url.</li>
+		<li>Press Generate New Key button to get your client id & client secret key.</li>
+      </ul>
+
+	  <h3 id="authorization"> Request an authorization code</h3>
+      <ul style="list-style:outside none none">
+		<li> We are using <strong style="font-family:arial;">OAuth 2.0 </strong> for api authorization process.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/authorize</code></pre></td>
+				</tr>
+			</table>
+		</li>
+        <li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>response_type</td><td>The value of this field should always be:&nbsp; code</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>authorize</td><td>An integer value should be pass.</td><td>Yes</td></tr>
+					<tr>
+						<td>redirect_uri</td>
+						<td><p>The URI your responses will be sent back to after authorization.&nbsp; This value must match with redirect url you specied on api access.</td>
+						<td>Yes</td>
+					</tr>
+					<tr>
+						<td>state</td>
+						<td><p>A unique string value of your choice that is
+						hard to guess. Used to prevent <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" rel="nofollow" target="_blank">CSRF</a>.&nbsp;
+						<br> e.g. state=DCEeFWf45A53sdfKef424</p></td><td>Yes</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li> <strong>Sample Request Url:</strong> </li>
+		<li class="arial"> https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz </li>
+		<li> While calling above url, you asked to login with your office manager account on api. Then you will see api authorization page.</li>
+		<li> <img src="img/authorization_pg.png" alt="API Authorization" style="margin-top: 10px;" /> </li>
+		<li> Press Authorize button, you will get following authorization code response on your redirect url.</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>code</td><td>Authorization code from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>state</td><td>The unique string value you passed on request.</td></tr>
+				</tbody>
+			</table>
+		</li>
+      </ul>     
+		
+	  <h3 id="access_token"> Getting access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass authorization code to Token method to get api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>code</td><td>Use the code got from authorize method.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using authorization code to get token, value should always be:&nbsp; authorization_code</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="refresh_token"> Using refresh token to get access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass refresh token instead of authorization code to Token method to obtain api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>refresh_token</td><td>Use the refresh_token previously got.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using refresh token to get token, value should always be:&nbsp; refresh_token</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="syncproperties"> Import Agency Datas to OurTradie</h3>
+	  <ul style="list-style:outside none none">
+		<li> Using this method you could import all your agency property managers, properties, tenants, landlords & creditors to ourtradie. On the first import you should
+			pass all your properties & userdetails to ourtradie. After that send only modified properties or creditor informations. </li>
+		<li> Also you could send daily property statistics datas like rent, paid to, lease start, lease end, vacating date, rent arrear days, arrear amount. Using this details we
+			will send arrear notifications to tenants. </li>
+		<li> In this method you should pass datas as xml string or xml file. Please refer <a href="#syncproperties-xml">below details</a> for XML format.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/SyncProperties</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<span class="arial">Access token should be included in request header with “Authorization: Bearer {access token}”</span>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>XMLData</td><td>Agency datas passed as xml string.</td><td>-</td></tr>
+					<tr><td>XMLFile</td><td>Upload xml file instead of xml string. Pass XMLData or XMLFile, don't send both param in single call we accept any one of data only. </td><td>-</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<span>Sucess Respose</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>success</td><td>OK</td></tr>
+					<tr><td>data</td><td>XML data successfully added to background process.</td></tr>
+				</tbody>
+			</table>
+			<span>Failed Respose</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error message. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+      
+	  <h3 id="jobsretrieve"> Retrieve datas from ourtradie</h3>
+	  <ul style="list-style:outside none none">
+		<li> Using this method, user can retrieve property maintenance jobs and arrear notifications sent to tenants/landlords on a day. Get all
+			above infos as a xml string from this method.</li>
+		<h2 class="arial"> Property Maintenance Jobs </h2>
+		<li> Once the agency datas export process complete in ourtradie, property manager/landlords/tenant could create property maintenance job request to tradies in ourtradie.
+			Tradie allocated to a job request by PM or job accepted by tradie, job was confirmed. Confirmed jobs informations are available inside "ConfirmedJob" tag.
+		</li>
+		<li>After tradie complete the request, he could send invoice to PM. Invoice is approved by PM, job details sent with invoice details inside "WorkOrder" tag.</li>
+		<li> In this process, job request is allocated to a tradie not available in your agency, we will send those creditor details inside "Creditor" tag. Creditor details had a tag "Reference", this
+			value is mapped to corresponding WorkOrder/ConfirmedJob details "CreditorRef" tag.
+		</li>
+		<li> On invoice approved state PM can move the job back to complete status. We will send those job ids on "JobReverse" tag.</li>
+
+		<h2 class="arial"> Arrear notifications </h2>
+		<li> Using your daily property statistics datas, ourtradie will send arrear notifications as Email/SMS  and generate CALL/Letter details. 
+			Completed arrear actions as passed inside "Arrear" tag </li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/JobsRetrieve</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<span class="arial">Access token should be included in request header with “Authorization: Bearer {access token}”</span>
+			<h2 class="title">Request Params</h2>
+			<li> No more request params </li>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<span>Sucess Respose</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>success</td><td>OK</td></tr>
+					<tr><td>data</td><td>XML string data contains job & other infos.</td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="updatejobs"> Send imported jobs & arrear actions</h3>
+	  <ul style="list-style:outside none none">
+		<li> Import jobs & arrear actions to your agency software received from JobsRetrieve method. Send Job IDs, arrear ids of successfully imported jobs on your side. </li>
+		<li> We will mark those jobs & arrear actions as imported on agency software and prevent those details again sending on retrieve method.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/UpdateJobs</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<span class="arial">Access token should be included in request header with “Authorization: Bearer {access token}”</span>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>jobs</td><td>Array list value of ourtradie jobs id in Job details.</td></tr>
+					<tr><td>arrearids</td><td>Array list value of ourtradie arrear actions id in arrear details.</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<span>Sucess Respose</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>success</td><td>OK</td></tr>
+					<tr><td>data</td><td>Received jobs & arrear records marked as imported.</td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="client-library"> Client side API access library file</h3>
+	  <ul class="arial">
+		<li>As we created client side api access library in PHP with CURL. You can refer & user this to make api requests. Client api file was hosted in git repository.
+			You can access it from this <a href="https://github.com/ourtradie/PM-API-Client-Library">link</a>. Also it contains syncProperties call sample code. For testing purpose
+			you can access below urls to checking api calls.
+		</li>
+		<li> Test PM site URL: <a href="http://uat.ourtradie.com.au/propertymanager/">http://uat.ourtradie.com.au/propertymanager/</a></li>
+		<li> Test API URL: <a href="http://uat.ourtradie.com.au/manager/api/">http://uat.ourtradie.com.au/manager/api/</a></li>
+      </ul>
+
+	  <h3 id="syncproperties-xml"> SyncProperties request XML structure</h3>
+	  <ul>
+		<li class="arial">Here all dates are must be in this format - yyyy-mm-dd H:i:s (ex: 2016-07-29 05:20:29)</li>
+      </ul>
+	  <pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;root&gt;
+   &lt;!-- Managements tag contains property, property manager, owner and tenant details.--&gt;
+   &lt;Managements&gt;
+      &lt;!-- Management tag contains property details.--&gt;
+      &lt;Management&gt;
+         &lt;ID&gt;{Property ID}&lt;/ID&gt;
+         &lt;KeyNo&gt;{Property Key no}&lt;/KeyNo&gt;
+         &lt;ManagerID&gt;{PropertyManager ID}&lt;/ManagerID&gt;
+         &lt;OwnerID&gt;{PropertyOwner ID}&lt;/OwnerID&gt;
+         &lt;BusinessId&gt;{Property Reference/Unique Code}&lt;/BusinessId&gt;
+         &lt;StreetName&gt;{Property Street}&lt;/StreetName&gt;
+         &lt;Suburb&gt;{Property Suburb}&lt;/Suburb&gt;
+         &lt;State&gt;{Property State}&lt;/State&gt;
+         &lt;PostCode&gt;{Property Postcode}&lt;/PostCode&gt;
+         &lt;Zone&gt;{Property Zone}&lt;/Zone&gt;
+         &lt;Furnished&gt;{Property Zone}&lt;/Furnished&gt;
+         &lt;Limit&gt;{Expenditure / Spend Limit}&lt;/Limit&gt;
+         &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
+         &lt;ModDate&gt;{Property Details Last Modified Date}&lt;/ModDate&gt;
+         &lt;Managers&gt;
+            &lt;Manager&gt;
+               &lt;FullName&gt;{PM FullName}&lt;/FullName&gt;
+               &lt;FirstName&gt;{PM FirstName}&lt;/FirstName&gt;
+               &lt;LastName&gt;{PM LastName}&lt;/LastName&gt;
+               &lt;Salutation&gt;{PM Salutation}&lt;/Salutation&gt;
+               &lt;Contact&gt;{PM Contact Name}&lt;/Contact&gt;
+               &lt;ReferenceID&gt;{PM Reference/Unique Code}&lt;/ReferenceID&gt;
+               &lt;Email&gt;{PM Email ID}&lt;/Email&gt;
+               &lt;Mobile&gt;{PM Mobile No.}&lt;/Mobile&gt;
+               &lt;ModDate&gt;{PM Details Last Modified Date}&lt;/ModDate&gt;
+            &lt;/Manager&gt;
+         &lt;/Managers&gt;
+         &lt;Tenants&gt;
+            &lt;Tenant&gt;
+               &lt;FullName&gt;{Tenant FullName}&lt;/FullName&gt;
+               &lt;FirstName&gt;{Tenant FirstName}&lt;/FirstName&gt;
+               &lt;LastName&gt;{Tenant LastName}&lt;/LastName&gt;
+               &lt;Salutation&gt;{Tenant Salutation}&lt;/Salutation&gt;
+               &lt;Contact&gt;{Tenant Contact Name}&lt;/Contact&gt;
+               &lt;ReferenceID&gt;{Tenant Reference/Unique Code}&lt;/ReferenceID&gt;
+               &lt;Email&gt;{Tenant Email ID}&lt;/Email&gt;
+               &lt;Mobile&gt;{Tenant Mobile No.}&lt;/Mobile&gt;
+               &lt;Home&gt;{Tenant Home Contact No.}&lt;/Home&gt;
+               &lt;Business&gt;{Tenant Business Contact No.}&lt;/Business&gt;
+               &lt;LeaseStart&gt;{Tenant Lease First Start Date}&lt;/LeaseStart&gt;
+               &lt;LeaseEnd&gt;{Tenant Lease End Date}&lt;/LeaseEnd&gt;
+               &lt;VacateDate&gt;{Tenant Vacating Date}&lt;/VacateDate&gt;
+               &lt;ModDate&gt;{Tenant Details Last Modified Date}&lt;/ModDate&gt;
+            &lt;/Tenant&gt;
+         &lt;/Tenants&gt;
+         &lt;Landlords&gt;
+            &lt;Landlord&gt;
+               &lt;FullName&gt;{Owner FullName}&lt;/FullName&gt;
+               &lt;FirstName&gt;{Owner FirstName}&lt;/FirstName&gt;
+               &lt;LastName&gt;{Owner LastName}&lt;/LastName&gt;
+               &lt;Salutation&gt;{Owner Salutation}&lt;/Salutation&gt;
+               &lt;Contact&gt;{Owner Contact Name}&lt;/Contact&gt;
+               &lt;ReferenceID&gt;{Owner Reference/Unique Code}&lt;/ReferenceID&gt;
+               &lt;Email&gt;{Owner Email ID}&lt;/Email&gt;
+               &lt;Mobile&gt;{Owner Mobile No.}&lt;/Mobile&gt;
+               &lt;Home&gt;{Owner Home Contact No.}&lt;/Home&gt;
+               &lt;Business&gt;{Owner Business Contact No.}&lt;/Business&gt;
+               &lt;MailingAddressLine1&gt;{Owner Street Address}&lt;/MailingAddressLine1&gt;
+               &lt;MailingAddressLine2&gt;{Suburb State Postcode}&lt;/MailingAddressLine2&gt;
+               &lt;ModDate&gt;{Owner Details Last Modified Date}&lt;/ModDate&gt;
+            &lt;/Landlord&gt;
+         &lt;/Landlords&gt;
+      &lt;/Management&gt;
+   &lt;/Managements&gt;
+
+
+   &lt;!-- Creditors tag contains all tradie details.--&gt;
+   &lt;Creditors&gt;
+      &lt;Creditor&gt;
+         &lt;CreditorID&gt;{Creditor Reference/Unique Code}&lt;/CreditorID&gt;
+         &lt;CompanyName&gt;{Creditor Company Name}&lt;/CompanyName&gt;
+         &lt;FirstName&gt;{Creditor First Name}&lt;/FirstName&gt;
+         &lt;Salutation&gt;{Creditor Salutation}&lt;/Salutation&gt;
+         &lt;Contact&gt;{Creditor Contact Name}&lt;/Contact&gt;
+         &lt;MailingAddressLine1&gt;{Creditor Street Address}&lt;/MailingAddressLine1&gt;
+         &lt;MailingAddressLine2&gt;{Suburb State Postcode}&lt;/MailingAddressLine2&gt;
+         &lt;PostCode&gt;{Creditor Postcode}&lt;/PostCode&gt;
+         &lt;BuinessPhone&gt;{Creditor Business Contact No.}&lt;/BuinessPhone&gt;
+         &lt;MobilePhone&gt;{Creditor Mobile No.}&lt;/MobilePhone&gt;
+         &lt;Email&gt;{Creditor Email ID}&lt;/Email&gt;
+         &lt;TradeCategories&gt;{Trade categories (comma separated values)}&lt;/TradeCategories&gt;
+         &lt;ABN&gt;{Creditor ABN}&lt;/ABN&gt;
+         &lt;BSB&gt;{Creditor BSB Code}&lt;/BSB&gt;
+         &lt;ACN&gt;{Creditor ACN}&lt;/ACN&gt;
+         &lt;ACNAME&gt;{Creditor Account name}&lt;/ACNAME&gt;
+         &lt;ModDate&gt;{Creditor Details Last Modified Date}&lt;/ModDate&gt;
+      &lt;/Creditor&gt;
+   &lt;/Creditors&gt;
+
+
+   &lt;!-- This contains jobs imported from ourtradie and invoice paid/processed in trustsystem.--&gt;
+   &lt;PaidJobs&gt;
+      &lt;Job&gt;
+         &lt;JobID&gt;{Ourtradie Job ID}&lt;/JobID&gt;
+         &lt;name&gt;{Job Name}&lt;/name&gt;
+         &lt;InvoiceAmount&gt;{Job total amount}&lt;/InvoiceAmount&gt;
+         &lt;Invoice&gt;{Invoice Number}&lt;/Invoice&gt;
+         &lt;Processed&gt;{Invoice Paid/Processed date}&lt;/Processed&gt;
+         &lt;Created&gt;{Job Created/Start date}&lt;/Created&gt;
+         &lt;Tradie&gt;{Creditor Reference/Unique code}&lt;/Tradie&gt;
+         &lt;Property&gt;{Property Reference/Unique code}&lt;/Property&gt;
+         &lt;Reference&gt;{Transaction ID/Reference number}&lt;/Reference&gt;
+      &lt;/Job&gt;
+   &lt;/PaidJobs&gt;
+
+
+   &lt;!-- Property &amp; tenant extra informations .--&gt;
+   &lt;PropertyStatistics&gt;
+      &lt;PropertyStatistic&gt;
+         &lt;PropertyReference&gt;{Property Reference/Unique Code}&lt;/PropertyReference&gt;
+         &lt;TenantReference&gt;{Tenant Reference/Unique Code}&lt;/TenantReference&gt;
+         &lt;Rent&gt;{Rent Amount}&lt;/Rent&gt;
+         &lt;PaidTo&gt;{Rent Paid To Date}&lt;/PaidTo&gt;
+         &lt;LastPaid&gt;{Rent Last Paid Date}&lt;/LastPaid&gt;
+         &lt;LeaseStart&gt;{Lease Start Date}&lt;/LeaseStart&gt;
+         &lt;LeaseStop&gt;{Lease End Date}&lt;/LeaseStop&gt;
+         &lt;LeaseFirstStart&gt;{Lease First Start Date}&lt;/LeaseFirstStart&gt;
+         &lt;Bond&gt;{Bond Amount}&lt;/Bond&gt;
+         &lt;LeaseTerm&gt;{Total Lease Periods}&lt;/LeaseTerm&gt;
+         &lt;Arrears&gt;{Total invoice + rent arrear amount of Tenant}&lt;/Arrears&gt;
+         &lt;RentArrears&gt;{Total rent arrear amount of Tenant}&lt;/RentArrears&gt;
+         &lt;DaysInArrears&gt;{Rent Arrears in Days}&lt;/DaysInArrears&gt;
+         &lt;ArrearsDueTo&gt;{Arrear due date}&lt;/ArrearsDueTo&gt;
+         &lt;ModifiedDate&gt;{Property Details Last Modified Date}&lt;/ModifiedDate&gt;
+         &lt;Rental&gt;{0/1 (if Rental property value is 1 otherwise 0)}&lt;/Rental&gt;
+         &lt;Credit&gt;{Tenant Rent in Credit amount}&lt;/Credit&gt;
+         &lt;Period&gt;{Rent period (weekly/monthly/four weekly/fortnightly)}&lt;/Period&gt;
+      &lt;/PropertyStatistic&gt;
+   &lt;/PropertyStatistics&gt;
+
+
+   &lt;!-- Property inspection informations .--&gt;
+   &lt;Inspecs&gt;
+      &lt;Inspec&gt;
+         &lt;PropertyReference&gt;{Property Reference/Unique Code}&lt;/PropertyReference&gt;
+         &lt;InspectionBegin&gt;{Inspection start date}&lt;/InspectionBegin&gt;
+         &lt;InspectionEnd&gt;{Inspection end date}&lt;/InspectionEnd&gt;
+         &lt;InspectionType&gt;{Entry/Exit/Routine}&lt;/InspectionType&gt;
+         &lt;InspectionDescription&gt;{Description detail of inspection}&lt;/InspectionDescription&gt;
+         &lt;ModifiedDate&gt;{Inspection details modified date}&lt;/ModifiedDate&gt;
+      &lt;/Inspec&gt;
+   &lt;/Inspecs&gt;
+
+
+   &lt;!-- Tenant transaction/ledger informations --&gt;
+   &lt;!-- Transaction Type Expansion
+		RE - Rent
+		BO - Bond
+		DE - Deposit
+		OW - Owner
+		CR - Creditor
+		LE - Let Fee
+		PF - Prep Fee
+		AD - Advertising
+		SD - Sale Deposit
+		SA - Sale
+		CA - Cancel
+		BA - Bank
+		IN - Invoice
+
+	--&gt;
+   &lt;!-- Ledger Type Expansion 
+		 C - Receipt
+		RC - Reverse Receipt
+		JC - Journal Credit
+		JD - Journal Debit
+		 D - Payment
+		RD - Reverse Payment
+	--&gt;
+   &lt;TenantLedgers&gt;
+      &lt;Ledgers&gt;
+         &lt;Ledger&gt;
+            &lt;ID&gt;{Transaction/Ledger ID}&lt;/ID&gt;
+            &lt;TenantID&gt;{Tenant ID}&lt;/TenantID&gt;
+            &lt;Reference&gt;{Transaction/Ledger Reference number}&lt;/Reference&gt;
+            &lt;TenantRef&gt;{Tenant Reference/Unique Code}&lt;/TenantRef&gt;
+            &lt;Notes&gt;{Transaction/Ledger Description}&lt;/Notes&gt;
+            &lt;Amount&gt;{Transaction/Ledger AMOUNT)&lt;/Amount&gt;
+            &lt;TransType&gt;{BO / CR / DE / IN / LE / OW / RE}&lt;/TransType&gt;
+            &lt;LedgerType&gt;{C / D / JC / JD / RC / RD}&lt;/LedgerType&gt;
+            &lt;FromRef&gt;{Transaction/Ledger from user Reference/Unique Code}&lt;/FromRef&gt;
+            &lt;ToRef&gt;{Transaction/Ledger to user Reference/Unique Code}&lt;/ToRef&gt;
+            &lt;Address&gt;{Property_Refere property_street suburb state postcode}&lt;/Address&gt;
+            &lt;Created&gt;{Transaction/Ledger Created date}&lt;/Created&gt;
+         &lt;/Ledger&gt;
+      &lt;/Ledgers&gt;
+   &lt;/TenantLedgers&gt;
+
+
+   &lt;!-- Owner transaction/statement informations --&gt;
+   &lt;OwnerStatements&gt;
+      &lt;Statements&gt;
+         &lt;Statement&gt;
+            &lt;ID&gt;{Transaction/Statement ID}&lt;/ID&gt;
+            &lt;Reference&gt;{Transaction/Statement Reference number}&lt;/Reference&gt;
+            &lt;OwnerRef&gt;{Owner Reference/Unique Code}&lt;/OwnerRef&gt;
+            &lt;Notes&gt;{Transaction/Statement Description}&lt;/Notes&gt;
+            &lt;Amount&gt;{Transaction/Statement Amount}&lt;/Amount&gt;
+            &lt;TransType&gt;{BO / DE / IN / LE / OW / RE}&lt;/TransType&gt;
+            &lt;LedgerType&gt;C / D / JC / JD / RC / RD&lt;/LedgerType&gt;
+            &lt;FromRef&gt;{Transaction/Statement from user Reference/Unique Code}&lt;/FromRef&gt;
+            &lt;ToRef&gt;{Transaction/Statement to user Reference/Unique Code}&lt;/ToRef&gt;
+            &lt;Address&gt;{Owner contact address}&lt;/Address&gt;
+            &lt;Created&gt;{Transaction/Ledger Created date}&lt;/Created&gt;
+         &lt;/Statement&gt;
+      &lt;/Statements&gt;
+   &lt;/OwnerStatements&gt;
+
+
+   &lt;!-- Tenant invoice records --&gt;
+   &lt;TenantInvoices&gt;
+      &lt;Invoice&gt;
+         &lt;ID&gt;{Invoice ID}&lt;/ID&gt;
+         &lt;Reference&gt;{Invoice Reference Number}&lt;/Reference&gt;
+         &lt;ToRef&gt;{Invoice to user Reference/Unique Code}&lt;/ToRef&gt;
+         &lt;Due&gt;{Invoice due date}&lt;/Due&gt;
+         &lt;Details&gt;{Invoice description/details}&lt;/Details&gt;
+         &lt;Created&gt;{Invoice created date}&lt;/Created&gt;
+         &lt;Amount&gt;{Invoice Amount}&lt;/Amount&gt;
+         &lt;Received&gt;{Received Amount}&lt;/Received&gt;
+         &lt;AmountDue&gt;{Due Amount = Invoice Amount - Received Amount}&lt;/AmountDue&gt;
+         &lt;Modified&gt;{Invoice details modified date}&lt;/Modified&gt;
+      &lt;/Invoice&gt;
+   &lt;/TenantInvoices&gt;
+
+
+   &lt;!-- Send imported ourtradie maintenance jobs invoice processed date, to update job processed date in ourtradie --&gt;
+   &lt;PaidJobs&gt;
+	  &lt;Job&gt;
+		&lt;JobID&gt;{Ourtradie maintenance Job ID}&lt;/JobID&gt;
+		&lt;Processed&gt;{Job invoice payment processed date}&lt;/Processed&gt;
+	  &lt;/Job&gt;
+   &lt;/PaidJobs&gt;
+
+
+   &lt;!-- Send imported ourtradie maintenance jobs invoice disbursed date, to update job payment disbursed date in ourtradie --&gt;
+   &lt;DisbursedJobs&gt;
+	  &lt;Row&gt;
+		&lt;JobID&gt;{Ourtradie maintenance Job ID}&lt;/JobID&gt;
+		&lt;Processed&gt;{Job invoice payment processed date}&lt;/Processed&gt;
+	  &lt;/Row&gt;
+   &lt;/DisbursedJobs&gt;	
+
+
+   &lt;!-- Today inactived/deleted properties, owners, tenants, creditors &amp; Managers --&gt;
+   &lt;Inactive&gt;
+      &lt;Properties&gt;
+         &lt;Ref&gt;{Today inactived/deleted Property Reference/Unique Code}&lt;/Ref&gt;
+         &lt;Ref&gt;{Today inactived/deleted Property Reference/Unique Code}&lt;/Ref&gt;
+      &lt;/Properties&gt;
+      &lt;Owners&gt;
+         &lt;Ref&gt;{Today inactived/deleted Owner Reference/Unique Code}&lt;/Ref&gt;
+      &lt;/Owners&gt;
+      &lt;Tenants&gt;
+         &lt;Ref&gt;{Today inactived/deleted Tenant Reference/Unique Code}&lt;/Ref&gt;
+      &lt;/Tenants&gt;
+      &lt;Creditors&gt;
+         &lt;Ref&gt;{Today inactived/deleted Creditor Reference/Unique Code}&lt;/Ref&gt;
+      &lt;/Creditors&gt;
+      &lt;Managers&gt;
+         &lt;Ref&gt;{Today inactived/deleted Manager Reference/Unique Code}&lt;/Ref&gt;
+      &lt;/Managers&gt;
+   &lt;/Inactive&gt;
+
+
+   &lt;LastUpdateDate&gt;{xml data prepared date and time}&lt;/LastUpdateDate&gt;
+
+   &lt;!-- Send once banking update process completed in agency software on the date. Otherwise don't send it. --&gt;
+   &lt;BankUpdateDate&gt;{Banking update compeleted time}&lt;/BankUpdateDate&gt;
+&lt;/root&gt;
+	  </pre>
+
+	  <h3 id="jobsretrieve-xml"> JobsRetrieve response XML structure</h3>
+	  <ul>
+		<li class="arial">Here all dates are in this format - yyyy-mm-dd H:i:s (ex: 2016-07-29 05:20:29)</li>
+      </ul>
+	  <pre class="prettyprint">
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;WorkOrders&gt;
+
+   &lt;!-- Each Workorder tag contains ourtradie completed Job informations to import on Trust Systems --&gt;
+   &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
+   &lt;WorkOrder&gt;
+      &lt;UserRef&gt;{PM Reference/Unique Code}&lt;/UserRef&gt;
+      &lt;TenantRef&gt;{Tenant Reference/Unique Code}&lt;/TenantRef&gt;
+      &lt;OwnerRef&gt;{Owner Reference/Unique Code}&lt;/OwnerRef&gt;
+      &lt;BondTenant&gt;{Bond pay selected Tenant Reference/Unique Code otherwise 0}&lt;/BondTenant&gt;
+      &lt;CreditorRef&gt;{Creditor Reference/Unique Code}&lt;/CreditorRef&gt;
+      &lt;PropertyRef&gt;{Property Reference/Unique Code}&lt;/PropertyRef&gt;
+      &lt;JobStart&gt;{Job started date}&lt;/JobStart&gt;
+      &lt;JobEnd&gt;{Job end date}&lt;/JobEnd&gt;
+      &lt;JobDescription&gt;{Job notes/description}&lt;/JobDescription&gt;
+      &lt;JobID&gt;{Ourtradie Job unique ID number}&lt;/JobID&gt;
+      &lt;JobName&gt;{Ourtradie Job Name}&lt;/JobName&gt;
+      &lt;JobStatus&gt;{finalised / landlord-to-pay / take-from-bond / tenant-to-pay}&lt;/JobStatus&gt;
+      &lt;Trade&gt;{Job Trade Categorie Name}&lt;/Trade&gt;
+      &lt;!-- If a job was offered job, quote tag should be qmpty --&gt;
+      &lt;QuoteList&gt;
+         &lt;Quote&gt;
+            &lt;TradieID&gt;{Quoted Tradie Reference/Unique Code}&lt;/TradieID&gt;
+            &lt;Amount&gt;{Quoted Amount}&lt;/Amount&gt;
+            &lt;Desc&gt;{Quoted Description}&lt;/Desc&gt;
+         &lt;/Quote&gt;
+         &lt;Quote&gt;
+            &lt;TradieID&gt;{Quoted Tradie Reference/Unique Code}&lt;/TradieID&gt;
+            &lt;Amount&gt;{Quoted Amount}&lt;/Amount&gt;
+            &lt;Desc&gt;{Quoted Description}&lt;/Desc&gt;
+         &lt;/Quote&gt;
+      &lt;/QuoteList&gt;
+      &lt;!-- If a job was quote job & quote tags presented, QuoteSelected value is 1 otherwise 0. --&gt;
+      &lt;QuoteSelected&gt;{Selected Quote Number }&lt;/QuoteSelected&gt;
+      &lt;!-- Trust system enabled Invoice tenants for bond work in Ourtradie agency settings & job was take-from-bond only TenantBond tag will be available --&gt;
+      &lt;TenantBond&gt;1&lt;/TenantBond&gt;
+      &lt;Created&gt;{Job Created date}&lt;/Created&gt;
+      &lt;Completed&gt;{Job Completed date}&lt;/Completed&gt;
+      &lt;Modified&gt;{Job Details Modified date}&lt;/Modified&gt;
+      &lt;TotalAmount&gt;{Job total invoice amount}&lt;/TotalAmount&gt;
+      &lt;TradieCompany&gt;{Tradie Company Name}&lt;/TradieCompany&gt;
+      &lt;Notes&gt;{Job notes entered by Tradie/PM/Tenant/Owner}&lt;/Notes&gt;
+      &lt;InvoiceNumber&gt;{Job Invoice Number}&lt;/InvoiceNumber&gt;
+      &lt;InvoiceDesc&gt;{Job Invoice Description}&lt;/InvoiceDesc&gt;
+      &lt;Attachments&gt;
+         &lt;Attachment&gt;{Job Invoice PDF Url}&lt;/Attachment&gt;
+      &lt;/Attachments&gt;
+      &lt;Categories&gt;{~General Maintenance~/~Residential~}&lt;/Categories&gt;
+      &lt;!-- below tags are optional/defualt tags.--&gt;
+      &lt;GST&gt;1&lt;/GST&gt;
+      &lt;Status&gt;10&lt;/Status&gt;
+      &lt;ActionReference /&gt;
+      &lt;Action&gt;2&lt;/Action&gt;
+      &lt;ActionTypeIndex&gt;9&lt;/ActionTypeIndex&gt;
+      &lt;Invoice&gt;1&lt;/Invoice&gt;
+      &lt;DataSetID&gt;0&lt;/DataSetID&gt;
+      &lt;Remind&gt;0&lt;/Remind&gt;
+      &lt;Private&gt;0&lt;/Private&gt;
+      &lt;RTAVersion&gt;0&lt;/RTAVersion&gt;
+      &lt;TypeIndex&gt;0&lt;/TypeIndex&gt;
+      &lt;OrderIndex&gt;0&lt;/OrderIndex&gt;
+      &lt;AccountID&gt;1&lt;/AccountID&gt;
+      &lt;Type&gt;2&lt;/Type&gt;
+      &lt;ChequeNumber&gt;0&lt;/ChequeNumber&gt;
+      &lt;CommissionType&gt;3&lt;/CommissionType&gt;
+      &lt;Withhold&gt;1&lt;/Withhold&gt;
+      &lt;Hold&gt;0&lt;/Hold&gt;
+      &lt;DissectionID&gt;0&lt;/DissectionID&gt;
+      &lt;FileType&gt;4&lt;/FileType&gt;
+      &lt;OriginalTransactionID&gt;0&lt;/OriginalTransactionID&gt;
+      &lt;AdvertisingDebit&gt;0&lt;/AdvertisingDebit&gt;
+      &lt;Audit&gt;0&lt;/Audit&gt;
+      &lt;AttachmentFileID&gt;42&lt;/AttachmentFileID&gt;
+   &lt;/WorkOrder&gt;
+
+   &lt;!-- Each ConfirmedJob tag contains ourtradie tradie confirmed Job informations to import on Trust Systems --&gt;
+   &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
+   	&lt;ConfirmedJob&gt;
+      &lt;UserRef&gt;{PM Reference/Unique Code}&lt;/UserRef&gt;
+      &lt;TenantRef&gt;{Tenant Reference/Unique Code}&lt;/TenantRef&gt;
+      &lt;OwnerRef&gt;{Owner Reference/Unique Code}&lt;/OwnerRef&gt;
+      &lt;BondTenant&gt;{Bond pay selected Tenant Reference/Unique Code otherwise 0}&lt;/BondTenant&gt;
+      &lt;CreditorRef&gt;{Creditor Reference/Unique Code}&lt;/CreditorRef&gt;
+      &lt;PropertyRef&gt;{Property Reference/Unique Code}&lt;/PropertyRef&gt;
+      &lt;JobStart&gt;{Job started date}&lt;/JobStart&gt;
+      &lt;JobEnd&gt;{Job end date}&lt;/JobEnd&gt;
+      &lt;JobDescription&gt;{Job notes/description}&lt;/JobDescription&gt;
+      &lt;JobID&gt;{Ourtradie Job unique ID number}&lt;/JobID&gt;
+      &lt;JobName&gt;{Ourtradie Job Name}&lt;/JobName&gt;
+      &lt;JobStatus&gt;{future / active}&lt;/JobStatus&gt;
+      &lt;Trade&gt;{Job Trade Categorie Name}&lt;/Trade&gt;
+ 	  &lt;!-- If a job was offered job, quote tag should be qmpty --&gt;
+      &lt;QuoteList&gt;
+         &lt;Quote&gt;
+            &lt;TradieID&gt;{Quoted Tradie Reference/Unique Code}&lt;/TradieID&gt;
+            &lt;Amount&gt;{Quoted Amount}&lt;/Amount&gt;
+            &lt;Desc&gt;{Quoted Description}&lt;/Desc&gt;
+         &lt;/Quote&gt;
+         &lt;Quote&gt;
+            &lt;TradieID&gt;{Quoted Tradie Reference/Unique Code}&lt;/TradieID&gt;
+            &lt;Amount&gt;{Quoted Amount}&lt;/Amount&gt;
+            &lt;Desc&gt;{Quoted Description}&lt;/Desc&gt;
+         &lt;/Quote&gt;
+      &lt;/QuoteList&gt;
+      &lt;!-- If a job was quote job & quote tags presented, QuoteSelected value is 1 otherwise 0. --&gt;
+      &lt;QuoteSelected&gt;{Selected Quote Number }&lt;/QuoteSelected&gt;
+      &lt;Created&gt;{Job Created date}&lt;/Created&gt;
+      &lt;Completed&gt;{Job Completed date}&lt;/Completed&gt;
+      &lt;Modified&gt;{Job Details Modified date}&lt;/Modified&gt;
+      &lt;TotalAmount&gt;{Job total invoice amount}&lt;/TotalAmount&gt;
+      &lt;TradieCompany&gt;{Tradie Company Name}&lt;/TradieCompany&gt;
+      &lt;Notes&gt;{Job notes entered by Tradie/PM/Tenant/Owner}&lt;/Notes&gt;
+      &lt;InvoiceNumber&gt;{Job Invoice Number}&lt;/InvoiceNumber&gt;
+      &lt;InvoiceDesc&gt;{Job Invoice Description}&lt;/InvoiceDesc&gt;
+      &lt;Attachments&gt;
+         &lt;Attachment&gt;{Job Invoice PDF Url}&lt;/Attachment&gt;
+      &lt;/Attachments&gt;
+      &lt;Categories&gt;{~General Maintenance~/~Residential~}&lt;/Categories&gt;
+      &lt;!-- below tags are optional/defualt tags.--&gt;
+      &lt;GST&gt;1&lt;/GST&gt;
+      &lt;Status&gt;10&lt;/Status&gt;
+      &lt;ActionReference /&gt;
+      &lt;Action&gt;2&lt;/Action&gt;
+      &lt;ActionTypeIndex&gt;9&lt;/ActionTypeIndex&gt;
+      &lt;Invoice&gt;1&lt;/Invoice&gt;
+      &lt;DataSetID&gt;0&lt;/DataSetID&gt;
+      &lt;Remind&gt;0&lt;/Remind&gt;
+      &lt;Private&gt;0&lt;/Private&gt;
+      &lt;RTAVersion&gt;0&lt;/RTAVersion&gt;
+      &lt;TypeIndex&gt;0&lt;/TypeIndex&gt;
+      &lt;OrderIndex&gt;0&lt;/OrderIndex&gt;
+      &lt;AccountID&gt;1&lt;/AccountID&gt;
+      &lt;Type&gt;2&lt;/Type&gt;
+      &lt;ChequeNumber&gt;0&lt;/ChequeNumber&gt;
+      &lt;CommissionType&gt;3&lt;/CommissionType&gt;
+      &lt;Withhold&gt;1&lt;/Withhold&gt;
+      &lt;Hold&gt;0&lt;/Hold&gt;
+      &lt;DissectionID&gt;0&lt;/DissectionID&gt;
+      &lt;FileType&gt;4&lt;/FileType&gt;
+      &lt;OriginalTransactionID&gt;0&lt;/OriginalTransactionID&gt;
+      &lt;AdvertisingDebit&gt;0&lt;/AdvertisingDebit&gt;
+      &lt;Audit&gt;0&lt;/Audit&gt;
+      &lt;AttachmentFileID&gt;42&lt;/AttachmentFileID&gt;
+	&lt;/ConfirmedJob&gt;
+
+   &lt;!-- Job completed creditor was not mapped in trust system, he was our registered creditor means, Creditor tag is available to update in trust system --&gt;
+   &lt;Creditor&gt;
+      &lt;id&gt;{Creditor id in Ourtradie}&lt;/id&gt;
+      &lt;name&gt;{Creditor name in Ourtradie}&lt;/name&gt;
+      &lt;lastname&gt;{Creditor lastname in Ourtradie}&lt;/lastname&gt;
+      &lt;email&gt;{Creditor email in Ourtradie}&lt;/email&gt;
+      &lt;mobile&gt;{Creditor mobile phone number in Ourtradie}&lt;/mobile&gt;
+      &lt;business&gt;{Creditor business phone number in Ourtradie}&lt;/business&gt;
+      &lt;home&gt;{Creditor home phone number in Ourtradie}&lt;/home&gt;
+      &lt;abn&gt;{Creditor ABN Number}&lt;/abn&gt;
+      &lt;bank_name&gt;{Creditor Bank name}&lt;/bank_name&gt;
+      &lt;bsb&gt;{Creditor BSB number}&lt;/bsb&gt;
+      &lt;Account&gt;{Creditor Account number}&lt;/Account&gt;
+      &lt;AccountName&gt;{Creditor Account name}&lt;/AccountName&gt;
+      &lt;company&gt;{Creditor Company Name}&lt;/company&gt;
+      &lt;address&gt;{Creditor Street Address}&lt;/address&gt;
+      &lt;suburb&gt;{Creditor Suburb}&lt;/suburb&gt;
+      &lt;state&gt;{Creditor State}&lt;/state&gt;
+      &lt;zipcode&gt;{Creditor postcode}&lt;/zipcode&gt;
+      &lt;Reference&gt;{Creditor Reference/Unique Code}&lt;/Reference&gt;
+      &lt;Trade&gt;{Creditor Trade Categories comma separated values.}&lt;/Trade&gt;
+   &lt;/Creditor&gt;
+
+   &lt;!-- Previously imported Invoice approved jobs changed back to complete state by Property Manager in ourtradie --&gt;
+   &lt;JobReverse&gt;
+      &lt;id&gt;{Ourtradie Job id}&lt;/id&gt;
+   &lt;/JobReverse&gt;
+
+   &lt;!-- Arrear tag contains arrear sms/email/phone call/letter action informations done in ourtradie --&gt;
+   &lt;Arrear&gt;
+      &lt;Type&gt;{SMS / EMAIL / CALL / LETTER}&lt;/Type&gt;
+      &lt;PropertyRef&gt;{Property Reference/Unique Code}&lt;/PropertyRef&gt;
+      &lt;User&gt;{Tenant/Owner Reference/Unique Code}&lt;/User&gt;
+      &lt;UType&gt;{tnt / ll}&lt;/UType&gt;
+      &lt;Email&gt;{Tenant/Owner Email address}&lt;/Email&gt;
+      &lt;Subject&gt;{Arrear subject}&lt;/Subject&gt;
+      &lt;Message&gt;&lt;![CDATA[{Arrear message / description }]]&gt;&lt;/Message&gt;
+      &lt;SentTime&gt;{Arrear notification sent time}&lt;/SentTime&gt;
+      &lt;ID&gt;{Arrear notification ID in Ourtradie}&lt;/ID&gt;
+   &lt;/Arrear&gt;
+&lt;/WorkOrders&gt;
+	  </pre>
+
+    </div>
+  </div>
+</section>
+<section class="vibrant centered">
+  <div class="">
+    <h4> This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a>.</h4>
+  </div>
+</section>
+<footer>
+  <div class="">
+    <p> &copy; OurTradie Pty. Ltd.</p>
+  </div>
+</footer>
+</div>
+<script src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/prettify/prettify.js"></script> 
+<script src="js/jquery-scrolltofixed-min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
 </body>
 </html>
