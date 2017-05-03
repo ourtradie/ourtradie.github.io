@@ -1,0 +1,1406 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>OurTradie Tradie API</title>
+<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/prettify.css">
+</head>
+<body>
+<div class="wrapper">
+<nav>
+ 
+  	<div class="pull-left">
+    	<h1><a href="javascript:"><img src="img/icon.png" alt="OurTradie Tradie API" /> <span></span></a></h1>
+    </div>
+    
+    <div class="pull-right" style="display:none">
+    </div>
+
+</nav>
+<header>
+  <div class="container">
+    <h2 class="lone-header">OurTradie Tradie API</h2>
+  </div>
+</header>
+<section>
+  <div class="container">
+    <ul class="docs-nav">
+      <li><strong>Getting Started</strong></li>
+      <li><a href="#welcome" class="cc-active">Welcome</a></li>
+      <li><a href="#overview" class="cc-active">Overview</a></li>
+      <li class="separator"></li>
+      <li><strong>API Reference</strong></li>
+      <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
+      <li><a href="#authorization" class="cc-active">Authorization</a></li>
+      <li><a href="#access_token" class="cc-active">Access Token</a></li>
+	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
+	  <li><strong>Methods</strong></li>
+	  <li><a href="#tradiejobaccept" class="cc-active">Tradie Job Accept</a></li>
+      <li><a href="#tradiejobreject" class="cc-active">Tradie Job Reject</a></li>
+	  <li><a href="#tradiejobschedule" class="cc-active">Tradie Job Schedule</a></li>
+      <li><a href="#tradiejobstartnow" class="cc-active">Tradie Job Startnow</a></li>
+	  <li><a href="#tradiejobreschedule" class="cc-active">Tradie Job Reschedule</a></li>
+	  <li><a href="#tradiejobsubmitinvoice" class="cc-active">Tradie Job Submit Invoice</a></li>
+	  <li><a href="#tradiejobcancel" class="cc-active">Tradie Job Cancel</a></li>
+	  <li><a href="#tradiejobretractcancel" class="cc-active">Tradie Job Retract Cancel</a></li>
+	  <li><a href="#tradiejobrejectcancel" class="cc-active">Tradie Job Reject Cancel</a></li>
+	  <li><a href="#tradiejobcompleteexistingcontract" class="cc-active">Tradie Job Complete Existing Contract</a></li>
+	  <li><a href="#tradiejobmarkaspaid" class="cc-active">Tradie Job Mark As Paid</a></li>
+	  <li><a href="#tradiejobresubmitinvoice" class="cc-active">Tradie Job Resubmit Invoice</a></li>
+	  <li><a href="#tradiejobconfirmpayment" class="cc-active">Tradie Job Confirm Payment</a></li>
+	  <li><a href="#tradiejobcompleteinspection" class="cc-active">Tradie Job Complete Inspection</a></li>
+	  <li><a href="#tradiejobaddappointments" class="cc-active">Tradie Job Add Apppointments</a></li>
+	  <li><a href="#tradiejobcompletesmokepayment" class="cc-active">Tradie Job Complete Smoke Payment</a></li>
+	  <li><a href="#tradiejobsave" class="cc-active">Tradie Job Save</a></li>
+	  <li><a href="#tradiejobfuturesave" class="cc-active">Tradie Job Future Save</a></li>
+	  <li><a href="#tradiejobactivesave" class="cc-active">Tradie Job Active Save</a></li>
+	  <li><a href="#tradieoffertoquote" class="cc-active">Tradie Offer to Quote</a></li>
+	  <li><a href="#tradiequotesubmit" class="cc-active">Tradie Quote Submit</a></li>
+	  <li><a href="#tradiequoteresubmit" class="cc-active">Tradie Quote Resubmit</a></li>
+	  <li><a href="#tradiequoteassign" class="cc-active">Tradie Quote Assign</a></li>
+	  <li><a href="#tradiequotereassign" class="cc-active">Tradie Quote Reassign</a></li>
+	  <li><a href="#tradiequotereject" class="cc-active">Tradie Quote Reject</a></li>
+	  <li><a href="#tradiequoteconfirm" class="cc-active">Tradie Quote Confirm</a></li>
+	  <li><a href="#tradiequotecancel" class="cc-active">Tradie Quote Cancel</a></li>
+	  <li><a href="#tradiequoteretractcancel" class="cc-active">Tradie Quote Retract Cancel</a></li>
+	  <li><a href="#tradiequoterejectcancel" class="cc-active">Tradie Quote Reject Cancel</a></li>
+	  <li><a href="#tradiequoteacceptcancel" class="cc-active">Tradie Quote Accept Cancel</a></li>
+	  <li><strong>Downloads</strong></li>
+	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
+	  <li><a href="#syncproperties-xml" class="cc-active">SyncProperties XML Format</a></li>
+	  <li><a href="#jobsretrieve-xml" class="cc-active">JobsRetrieve XML Format</a></li>
+    </ul>
+    <div class="docs-content">
+      <h2> Getting Started</h2>
+      <h3 id="welcome"> Welcome</h3>
+      <p> OurTradie provides solutions for online tradesmen and property managers. 
+		It doesn't really matter what type of work or service you are selling or buying on the Internet:  from building 
+		to electrical work and even dog grooming services. This program will help both tradies and their customers 
+		feel empowered and choose the best options to suit their business purposes. We help tradies, property managers, 
+		tenants and landlords work through maintenance tasks more efficiently together. </p>
+      
+      <h3 id="overview"> Overview</h3>
+	  <h4> OurTradie job states </h4>
+      <ul>
+        <li><strong>Offer:</strong> When the job has been offered by the customer.</li>
+		<li><strong>Quote:</strong> When the job is waiting for the tradie to quote.</li>
+		<li><strong>Accept:</strong> When the job is accepted by the tradie.</li>
+		<li><strong>Investigate:</strong> When the job is accepted but not dates are set.</li>
+		<li><strong>Quoted:</strong>  When the tradie has quoted the job.</li>
+		<li><strong>Approved:</strong> When the job has been approved by the customer.</li>
+		<li><strong>Active:</strong> When the job is in the Active job list for the tradie..</li>
+		<li><strong>Future::</strong>  Like Active but at a date in the future.</li>
+		<li><strong>Completed::</strong> When the job has been invoiced by the tradie.</li>
+		<li><strong>Finalised:</strong> When the submitted invoice is approved by the Property Manager (Customer).</li>
+		<li><strong>Payment:</strong> When the job has been paid by the customer.</li>
+		<li><strong>Reconciled:</strong> When the payment has been detected by the tradie and the tradie has marked it as Reconciled..</li>
+		<li><strong>Rejected:</strong> When the job has been rejected by the customer. Same as Disputed.</li>
+		<li><strong>Cancelled:</strong> When the job is cancelled.</li>
+		<li><strong>Serviced:</strong> When the service job has been completed.</li>
+		
+      </ul>
+
+	  <h2> API Reference</h2>
+      <h3 id="getting_access"> Getting Access</h3>
+      <ul>
+		<li>To access PM API, <a href="https://tradie.ourtradie.com.au/index.php?option=com_jentlausers&view=jentlauser&show=register&id=1129&Itemid=149">complete your user account either as tradiemanager / soletradie</a>.</li>
+        <li>After you have created your account, sign in to <a href="https://tradie.ourtradie.com.au">Tradie site</a> generate your api access via <strong>Settings &gt; API Access</strong></li>
+		<img src="img/API_Access.png" alt="API Access" style="max-width: 800px;margin-top: 10px;" />
+		<li>You must provide valid url in Redirect URL field, api responses will be sent to redirect url.</li>
+		<li>Press Generate New Key button to get your client id & client secret key.</li>
+      </ul>
+
+	  <h3 id="authorization"> Request an authorization code</h3>
+      <ul style="list-style:outside none none">
+		<li> We are using <strong style="font-family:arial;">OAuth 2.0 </strong> for api authorization process.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/authorize</code></pre></td>
+				</tr>
+			</table>
+		</li>
+        <li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>response_type</td><td>The value of this field should always be:&nbsp; code</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>authorize</td><td>An integer value should be pass.</td><td>Yes</td></tr>
+					<tr>
+						<td>redirect_uri</td>
+						<td><p>The URI your responses will be sent back to after authorization.&nbsp; This value must match with redirect url you specified on api access.</td>
+						<td>Yes</td>
+					</tr>
+					<tr>
+						<td>state</td>
+						<td><p>A unique string value of your choice that is
+						hard to guess. Used to prevent <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery" rel="nofollow" target="_blank">CSRF</a>.&nbsp;
+						<br> e.g. state=DCEeFWf45A53sdfKef424</p></td><td>Yes</td>
+					</tr>
+				</tbody>
+			</table>
+		</li>
+		<li> <strong>Sample Request Url:</strong> </li>
+		<li class="arial"> https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz </li>
+		<li> While calling above url, you asked to login with your office manager account on api. Then you will see api authorization page.</li>
+		<li> <img src="img/authorization_pg.png" alt="API Authorization" style="margin-top: 10px;" /> </li>
+		<li> Press Authorize button, you will get following authorization code response on your redirect url.</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>code</td><td>Authorization code from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>state</td><td>The unique string value you passed on request.</td></tr>
+				</tbody>
+			</table>
+		</li>
+      </ul>     
+		
+	  <h3 id="access_token"> Getting access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass authorization code to Token method to get api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>code</td><td>Use the code got from authorize method.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using authorization code to get token, value should always be:&nbsp; authorization_code</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="refresh_token"> Using refresh token to get access token</h3>
+	  <ul style="list-style:outside none none">
+		<li> Pass refresh token instead of authorization code to Token method to obtain api access token.</li>
+		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">GET</td>
+					<td class="endpoint"><pre class="url"><code>/api/token</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>refresh_token</td><td>Use the refresh_token previously got.</td><td>Yes</td></tr>
+					<tr><td>client_id</td><td>The "Client Id" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>client_secret</td><td>The "Client Secret" value generated in ourtradie.</td><td>Yes</td></tr>
+					<tr><td>grant_type</td><td>While using refresh token to get token, value should always be:&nbsp; refresh_token</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>access_token</td><td>Accesstoken generated from OAuth 2.0 endpoint.</td></tr>
+					<tr><td>expires_in</td><td>Token expiration time in minutes.</td></tr>
+					<tr><td>token_type</td><td>Type of OAuth generated token.</td></tr>
+					<tr><td>refresh_token</td><td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired, Use this to get new access token. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>	
+
+	  <h3 id="tradiejobaccept"> Tradie Job Accept</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobAccept</code></pre></td>
+				</tr>
+				</table>
+				</li>
+		<strong>Purpose:</strong> <br/>
+				<p> Accept offer state job. </p>
+		
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Accept State Successfully.</td></tr>
+					</tbody>
+						</table>
+			<span>Failed Response</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error message. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+		<strong>Note:</strong> <br/>
+			<p> Once the job is moved to the OurTradie Accept state, the related job will move either Active or Future State depending upon the job start date.</p>
+			<ul>
+			<li>	Future state - Scheduled with future dates. </li>
+			<li>	Active state - Scheduled with current dates. </li>
+			</ul>
+			<p>	The Tradie can Schedule or complete the Inspection or Reject the job. </p>
+
+	  </ul>
+	  <h3 id="tradiejobreject"> Tradie Job Reject</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobReject</code></pre></td>
+				</tr>
+			</table>
+			</li>
+			<strong>Purpose:</strong>
+			<p> Reject the job. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>RejectReason</td><td>Reason for Rejection.</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Reject State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p>Once the job is moved to the Reject state the tradie cannot access that job.</p>
+	  </ul>
+	  <h3 id="tradiejobschedule"> Tradie Job Schedule</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobSchedule</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Schedule the Offer/Accept state jobs.  The status of the job will be changed based on dates (Active/Future). </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>StartDate</td><td>dd-mm-yyyy hh:mm:ss</td><td>Yes</td></tr>
+					<tr><td>EndDate</td><td>dd-mm-yyyy hh:mm:ss</td><td>Yes</td></tr>
+					<tr><td>EntryNotice</td><td>If it is 1, then send email to tenant</td><td>Optional</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Active/Future State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p>Depending on the date selected, the job will be either moved to the Active or Future state.</p>
+	  </ul>
+
+	 <h3 id="tradiejobstartnow">Tradie Job Startnow</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobStartnow</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Start a job in the Future state with the current date. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Active State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Can start the job and job moved to active state, In Future page, can start the job as current date. </P>
+	  </ul>
+	  <h3 id="tradiejobreschedule">Tradie Job Reschedule</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobReschedule</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Reschedule the Active or Future state job dates based on tradie circumstances. The status of the job will be changed based on dates. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>Approved Start date for the job</td><td>Yes</td></tr>
+					<tr><td>ApprovedEnd</td><td>Approved End date for the job</td><td>Yes</td></tr>
+					<tr><td>RescheduleReason</td><td>Reason for Reschedule</td><td>Yes</td></tr>
+					<tr><td>EntryNotice</td><td>If it is 1, then send email to tenant</td><td>Optional</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Jobs are rescheduled successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Reschedule the dates, depending on that the job will be moved either Active or future state.</P>
+	  </ul>
+	  <h3 id="tradiejobsubmitinvoice">Tradie Job Submit Invoice</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobSubmitInvoice</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Submit the invoice for Accepted Offer, Investigate state, Active and Future state jobs. </P> 
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>Approved Start date for the job</td><td>Optional(only for contract job)</td></tr>
+					<tr><td>ApprovedEnd</td><td>Approved End date for the job</td><td>Optional(only for contract job)</td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td></td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>InvoiceNumber</td><td>Invoice number</td><td></td></tr>
+					<tr><td>Related</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Complete State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Once furnish all details, Submit the job invoice to customer. Propertymanager receives the Invoice details via email.</p>
+	  </ul>
+	 <h3 id="tradiejobcancel"> Tradie Job Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Cancel the Job. </P> 
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>CancelReason</td><td>Cancel Reason.</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Cancelled Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Tradie can cancel the job on Active and Future states. </P>
+	  </ul> 
+	  <h3 id="tradiejobretractcancel"> Tradie Job Retract Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobRetractCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Retract the cancelled Job.</P> 
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Retract the Cancelled Job Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Tradie can retract their cancelled jobs and come back to old status. </P>
+	  </ul> 
+	  <h3 id="tradiejobrejectcancel"> Tradie Job Reject Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobRejectCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Propertymanager rejects the Tradie cancelled Job.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>CancelReason</td><td>Job Id</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Active/Future State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Propertymanager cancelled the Tradie jobs or the tradie allows to reject cancel request for the particular jobs and comeback to old status. </p>
+	  </ul> 
+	<h3 id="tradiejobcompleteexistingcontract"> Tradie Job Complete Existing Contract</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobCompleteExistingContract</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Complete the already existing contract Job in Active / Future State.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>Approved Start date for the job(dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Contract job Moved to Reconciled state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Depending upon the contract date, </P>
+					<ul>
+<li>Job start & end - start > current – Prepaid status. </li>
+<li>Job start & end - end > current  - Current status.</li>
+<li>Job start & end - end < current – Super seeded status. </li> </ul>
+	  </ul> 
+	<h3 id="tradiejobmarkaspaid"> Tradie Job Mark As Paid</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobMarkAsPaid</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p>Complete the already existing Job in the Active / Future State. Mark the approved invoice which is in Finalised state as Paid. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Reconciled state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Paid status will be done by Finalised state jobs.</p>
+	  </ul>
+	<h3 id="tradiejobresubmitinvoice"> Tradie Job Resubmit Invoice</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobResubmitInvoice</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p>Resubmit the invoice in Complete state with new inputs. Again Property Manager will approve the invoice which is submitted by the tradie. The approved invoice will be moved to the Finalised state. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>Approved Start date for the job</td><td>Optional(only for contract job)</td></tr>
+					<tr><td>ApprovedEnd</td><td>Approved End date for the job</td><td>Optional(only for contract job)</td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td></td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>Related</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Invoice Resubmitted Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Resubmit the Invoice, The status of the job will not be changed on resubmit. That means the job stays in the Complete state. </p>
+	  </ul>
+	  <h3 id="tradiejobconfirmpayment"> Tradie Job Confirm Payment</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobConfirmPayment</code></pre></td>
+				</tr>
+			</table>
+					</li>
+					<strong>Purpose:</strong>
+			<p>Tradie confirm the payment after Propertymanager approves Invoice.</p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Invoice Moved to Reconciled state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Mark the approved invoice in Finalised state as Paid.</p>
+	  </ul>
+	  <h3 id="tradiejobcompleteinspection"> Tradie Job Complete Inspection</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobCompleteInspection</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p>Complete the inspection job in the Accept/Active/Future status.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Invoice Moved to Reconciled state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Only the state of Accepted/Active/Future, can complete the Inspection job and moved to Reconciled status. </p> 
+	  </ul>
+	  <h3 id="tradiejobaddappointments"> Tradie Job Add Appointments</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobAddAppointments</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p>Appointment added on Accept offer/Investigate/Quote/Active/Future States.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>AppointmentComment</td><td>Appointment comment</td><td></td></tr>
+					<tr><td>AppointmentTime</td><td>Appointment time for the job(dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					<tr><td>InvitePM</td><td>1- PM attending,0- not attending</td><td>Optional</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Moved to Active/Future State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Appointment added only before Invoice submission of the job, After Invoice submit, you can't added appointment for the job. </p>
+	  </ul>
+	  <h3 id="tradiejobcompletesmokepayment"> Tradie Job Complete Smoke Payment</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobCompleteSmokepayment</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p>Tradie completes the Smoke payment jobs.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>ContractStartDate</td><td>Contract Start date for the jobb(dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Contract job Moved to Reconciled state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Complete the smoke alarm contract Job in Active / Future States. </P>
+	  </ul>
+	 <h3 id="tradiejobsave"> Tradie Job Save</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobSave</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Save the job with new inputs for our reference.</p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>Notes</td><td>Notes added for the job</td><td></td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td>Yes</td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>Related</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job Saved Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p>  Job save done on Accepted /Quote/Active/Future states. The status of the job will not be changed. </p>
+	  </ul> 
+	 <h3 id="tradiejobfuturesave"> Tradie Job Future Save</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobFutureSave</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Save the job in Future state with new inputs. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>Notes</td><td>Notes added for the job</td><td></td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td>Yes</td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>Related</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Future Job Saved Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Once Save, The status of the job will not be changed.</p>
+	  </ul>  
+	   <h3 id="tradiejobactivesave"> Tradie Job Active Save</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieJobActiveSave</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Save the job in Active state with new inputs. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InspectionDate</td><td>Inspection date for the job</td><td>Yes</td></tr>
+					<tr><td>Notes</td><td>Notes added for the job</td><td></td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td>Yes</td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>Related</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Active Job Saved Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Once Save, The status of the job will not be changed.</p>
+	  </ul> 
+	  <h3 id="tradieoffertoquote"> Tradie Offer to Quote</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieOffertoQuote</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie converts the offer jobs to Quote jobs. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td><td>Optional</td></tr>
+					<tr><td>Documents</td><td>Supported file formats pdf,xls,odt,doc,docx,jpeg,png,gif,jpg,ppt,bmp,txt,xlsx,zip</td><td></td></tr>
+					<tr><td>Media</td><td>Supported file formats gif,jpeg,png,jpg,zip</td><td></td></tr>
+					<tr><td>Items</td><td>Workitems for the job</td><td></td><td></td></tr>
+					<tr><td>JobNumber</td><td>Job number</td><td></td></tr>
+					<tr><td>Related</td><td>Zip folder with name Related.zip</td><td></td></tr>
+					<tr><td>Contract</td><td>Zip folder with name Related.zip</td><td></td></tr>
+					<tr><td>InvoiceNumber</td><td>Invoice number</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Offer changed to Quote successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p>  The Jobs in Accept , Investigate, Future, Active states only can be convert to quote. After Convert to quote the job will be moved to QuoteSent.  Cannot able to convert contract job to quote.</p>
+	  </ul> 
+	  <h3 id="tradiequotesubmit"> Tradie Quote Submit</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteSubmit</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie submits the Quote job. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>EstimatedStart</td><td>dd-mm-yyyy hh:mm:ss</td><td>Optional</td></tr>
+					<tr><td>EstimateEnd</td><td>dd-mm-yyyy hh:mm:ss</td><td>Optional</td></tr>
+					<tr><td>QuoteDescription</td><td>QuoteDescription</td><td>Optional</td></tr>
+					<tr><td>QuoteDocuments</td><td>Zip folder with name Documents.zip</td><td></td><td></td></tr>
+					<tr><td>QuoteMedia</td><td>Zip folder with name Media.zip</td><td></td></tr>
+					<tr><td>QuoteItems</td><td>Workitems for the quote</td><td></td></tr>
+					<tr><td>Notes</td><td>Notes for quotes</td><td></td></tr>
+					<tr><td>QuoteRelated</td><td>Zip folder with name Related.zip</td><td></td></tr>
+					<tr><td>QuoteContract</td><td>Zip folder with name Contract.zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Submitted Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p>  Only submits the quote in Quote state ie) PM Requested job. If the job is moved to Reject state the tradie cannot access that job.</p>
+	  </ul>
+	   </ul> 
+	  <h3 id="tradiequoteresubmit"> Tradie Quote ReSubmit</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteReSubmit</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie resubmits the Quote job. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>EstimatedStart</td><td>dd-mm-yyyy hh:mm:ss</td><td>Optional</td></tr>
+					<tr><td>EstimateEnd</td><td>dd-mm-yyyy hh:mm:ss</td><td>Optional</td></tr>
+					<tr><td>QuoteDescription</td><td>QuoteDescription</td><td>Optional</td></tr>
+					<tr><td>QuoteDocuments</td><td>Zip folder with name Documents.zip</td><td></td><td></td></tr>
+					<tr><td>QuoteMedia</td><td>Zip folder with name Media.zip</td><td></td></tr>
+					<tr><td>QuoteItems</td><td>Workitems for the quote</td><td></td></tr>
+					<tr><td>Notes</td><td>Notes for quotes</td><td></td></tr>
+					<tr><td>QuoteRelated</td><td>Zip folder with name Related.zip</td><td></td></tr>
+					<tr><td>QuoteContract</td><td>Zip folder with name Contract.zip</td><td></td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote ReSubmitted Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Tradie can only resubmit the job before propertymanager approve the quote.</p>
+	  </ul>
+	  <h3 id="tradiequoteassign"> Tradie Quote Assign</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteAssign</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> The Tradie manager can only assign the job to his employees. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>QuoteAssign</td><td>EmailId of the assigned user</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Assigned Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> After assigned the job will be moved to Quote Assigned State.  After assigned the employee can quote the amount and send it to Tradiemanager. Tradimanager submit the quote to propertymanager for approval.</p>
+	  </ul>
+	   <h3 id="tradiequotereassign"> Tradie Quote ReAssign</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteReassign</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> The Tradie manager can reassign the quote to another employee. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>QuoteAssign</td><td>EmailId of the assigned user</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote ReAssigned Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> ReAssign done only on Assigned jobs. The jobs available on Reassigned Tab. </p>
+	  </ul>
+	   <h3 id="tradiequotereject"> Tradie Quote Reject</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteReject</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie rejects the quote in Quote Status. </P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>QuoteRejectReason</td><td>Reason of the Quote Reject</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Rejected Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Tradie employee reject the quote, tradiemanager receive the email. If reject the quote, can't access anymore. </p>
+	  </ul>
+	  <h3 id="tradiequoteconfirm"> Tradie Quote Confirm</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/tradieQuoteConfirm</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie confirms the job either active or future state depending on the dates confirm. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>(dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					<tr><td>ApprovedStart</td><td>(dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					<tr><td>Entrynotice</td><td>If it is 1, then send email to tenant</td><td>Optional</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Moved to Active / Future state Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Once Property manager approve the quote as current date, it comes to Tradie confirm state, The tradie can change the job dates and then continue, based on the dates the job will be moved to Active / Future State.</p>
+	  </ul>
+	  <h3 id="tradiequotecancel"> Tradie Quote Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie can cancel the quote.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>QuoteCancelReason</td><td>QuoteCancelReason</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Cancelled Reason Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Tradie cancel the quote changed as Cancelled status.</P>
+					</ul>
+	  <h3 id="tradiequoteretractcancel"> Tradie Quote Retract Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteRetractCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie retracts their cancelled quote.</P>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Moved to TradieConfirm State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+					<strong>Note:</strong> <br/>
+					<p> Retract the cancelled quote by Tradie cancel jobs.
+					</ul>
+	  <h3 id="tradiequoterejectcancel"> Tradie Quote Reject Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteRejectCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie rejects the propertymanager cancelled job.</P> 
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>RejectCancelReason</td><td>Reason of the quote cancel rejection</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Moved to TradieConfirm State Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>	
+<strong>Note:</strong> <br/>
+					<p> If propertymanager cancels the Tradie jobs, the Tradie rejects the job and submit the job to Propertymanager. </p>			
+			</ul>
+	  <h3 id="tradiequoteacceptcancel"> Tradie Quote Accept Cancel</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieQuoteAcceptCancel</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> Tradie accepts the Quote cancel jobs. </p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>AcceptCancelReason</td><td>Reason of the accept cancel rejection</td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Quote Cancelled Successfully.</td></tr>
+					</tbody>
+						</table>
+					</li>
+		<strong>Note:</strong> <br/>
+					<p> Accepts the job on Cancelled Quote status. </p>					
+			
+    </div>
+  </div>
+</section>
+<section class="vibrant centered">
+  <div class="">
+    <h4> This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a>.</h4>
+  </div>
+</section>
+<footer>
+  <div class="">
+    <p> &copy; OurTradie Pty. Ltd.</p>
+  </div>
+</footer>
+</div>
+<script src="js/jquery.min.js"></script> 
+<script type="text/javascript" src="js/prettify/prettify.js"></script> 
+<script src="js/jquery-scrolltofixed-min.js"></script>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+<script src="js/layout.js"></script>
+</body>
+</html>
