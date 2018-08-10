@@ -225,9 +225,12 @@
 				<tbody>
 					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
 					<tr><td>XMLData</td><td>Agency datas passed as xml string.</td><td>-</td></tr>
-					<tr><td>XMLFile</td><td>Upload xml file instead of xml string. Pass XMLData or XMLFile, don't send both param in single call we accept any one of data only. </td><td>-</td></tr>
+					<tr><td>XMLFile</td><td>Upload xml file instead of xml string. </td><td>-</td></tr>
 				</tbody>
 			</table>
+
+			<strong>Note:</strong> <br/>
+			<p> Pass XMLData or XMLFile, don't send both param in single call we accept any one of data only. Sample code for api call is available <a href="https://github.com/ourtradie/PM-API-Client-Library">here</a>.</p>
 		</li>
 		<li>
 			<h2 class="title">Response data</h2>
@@ -252,21 +255,28 @@
       
 	  <h3 id="jobsretrieve"> Retrieve datas from ourtradie</h3>
 	  <ul style="list-style:outside none none">
-		<li> Using this method, user can retrieve property maintenance jobs and arrear notifications sent to tenants/landlords on a day. Get all
+		<li> Using this method, user can retrieve property maintenance jobs, completed inspections and arrear notifications sent to tenants/landlords on a day. Get all
 			above infos as a xml string from this method.</li>
 		<h2 class="arial"> Property Maintenance Jobs </h2>
 		<li> Once the agency datas export process complete in ourtradie, property manager/landlords/tenant could create property maintenance job request to tradies in ourtradie.
-			Tradie allocated to a job request by PM or job accepted by tradie, job was confirmed. Confirmed jobs informations are available inside "ConfirmedJob" tag.
+			Tradie allocated to a job request by PM or job accepted by tradie, job was confirmed. Confirmed jobs informations are available inside <a href="#confirmedjob_tag">"ConfirmedJob"</a> tag.
 		</li>
-		<li>After tradie complete the request, he could send invoice to PM. Invoice is approved by PM, job details sent with invoice details inside "WorkOrder" tag.</li>
-		<li> In this process, job request is allocated to a tradie not available in your agency, we will send those creditor details inside "Creditor" tag. Creditor details had a tag "Reference", this
+		<li>After tradie complete the request, he could send invoice to PM. Invoice is approved by PM, job details sent with invoice details inside <a href="#workorder_tag">"WorkOrder"</a> tag.</li>
+		<li> In this process, job request is allocated to a tradie not available in your agency, we will send those creditor details inside <a href="#creditor_tag">"Creditor"</a> tag. Creditor details had a tag "Reference", this
 			value is mapped to corresponding WorkOrder/ConfirmedJob details "CreditorRef" tag.
 		</li>
-		<li> On invoice approved state PM can move the job back to complete status. We will send those job ids on "JobReverse" tag.</li>
+		<li> On invoice approved state PM can move the job back to complete status. We will send those job ids on <a href="#job_reverse_tag">"JobReverse"</a> tag.</li>
+
+
+		<h2 class="arial"> Completed Inspections </h2>
+		<li> Inspections can be create in ourtradie or Imported through SyncProperties api call from trust system. Created inspections can be scheduled & completed by inspection
+managers using our website / mobile Inspection apps. Those completed inspections informations are available inside <a href="#completed_inspection">Inspection</a> tag.
+		</li>
+
 
 		<h2 class="arial"> Arrear notifications </h2>
 		<li> Using your daily property statistics datas, ourtradie will send arrear notifications as Email/SMS  and generate CALL/Letter details. 
-			Completed arrear actions as passed inside "Arrear" tag </li>
+			Completed arrear actions as passed inside <a href="#arrear_tag">"Arrear"</a> tag </li>
 		<li class="method-tbl">
 			<table>
 				<tr>
@@ -632,6 +642,7 @@
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;WorkOrders&gt;
 
+   <h3 id="workorder_tag"> &nbsp; </h3>
    &lt;!-- Each Workorder tag contains ourtradie completed Job informations to import on Trust Systems --&gt;
    &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
    &lt;WorkOrder&gt;
@@ -704,6 +715,7 @@
       &lt;AttachmentFileID&gt;42&lt;/AttachmentFileID&gt;
    &lt;/WorkOrder&gt;
 
+   <h3 id="confirmedjob_tag"> &nbsp; </h3>
    &lt;!-- Each ConfirmedJob tag contains ourtradie tradie confirmed Job informations to import on Trust Systems --&gt;
    &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
    	&lt;ConfirmedJob&gt;
@@ -774,6 +786,7 @@
       &lt;AttachmentFileID&gt;42&lt;/AttachmentFileID&gt;
 	&lt;/ConfirmedJob&gt;
 
+   <h3 id="creditor_tag"> &nbsp; </h3>
    &lt;!-- Job completed creditor was not mapped in trust system, he was our registered creditor means, Creditor tag is available to update in trust system --&gt;
    &lt;Creditor&gt;
       &lt;id&gt;{Creditor id in Ourtradie}&lt;/id&gt;
@@ -797,11 +810,34 @@
       &lt;Trade&gt;{Creditor Trade Categories comma separated values.}&lt;/Trade&gt;
    &lt;/Creditor&gt;
 
+   <h3 id="job_reverse_tag"> &nbsp; </h3>
    &lt;!-- Previously imported Invoice approved jobs changed back to complete state by Property Manager in ourtradie --&gt;
    &lt;JobReverse&gt;
       &lt;id&gt;{Ourtradie Job id}&lt;/id&gt;
    &lt;/JobReverse&gt;
 
+   <h3 id="completed_inspection"> &nbsp; </h3>
+   &lt;!-- Inspection tag contains information of property inspections completed through Ourtradie Inspection Apps --&gt;
+   &lt;Inspection&gt;
+      &lt;ID&gt;{Inspection ID in Ourtradie}&lt;/ID&gt;
+      &lt;InsID&gt;{If inspection created from SyncProperties call, hold Inspection Unique Reference of trust otherwise empty}&lt;/InsID&gt;
+      &lt;PropRef&gt;{Property Reference/Unique Code}&lt;/PropRef&gt;
+      &lt;Attachment&gt;{Completed inspection report PDF url}&lt;/Attachment&gt;
+      &lt;CleanReport&gt;{Cleaning report PDF url}&lt;/CleanReport&gt;
+      &lt;InspectionBegin&gt;{Inspection start date}&lt;/InspectionBegin&gt;
+      &lt;InspectionType&gt;{Entry / Routine / Exit}&lt;/InspectionType&gt;
+      &lt;Deleted&gt;{If inspection deleted in ourtradie send value 1 otherwise 0}&lt;/Deleted&gt;
+      &lt;InspectionDescription&gt;{Inspection description }&lt;/InspectionDescription&gt;
+      &lt;InspectionEnd&gt;{Inspection end date}&lt;/InspectionEnd&gt;
+      &lt;Completed&gt;{Inspection completed date}&lt;/Completed&gt;
+      &lt;Bedrooms&gt;{Property Bedrooms count}&lt;/Bedrooms&gt;
+      &lt;Bathrooms&gt;{Property Bathrooms count}&lt;/Bathrooms&gt;
+      &lt;CarAccomm&gt;{Car accommadation count}&lt;/CarAccomm&gt;
+      &lt;FirstRoutine&gt;{Duration between entry and first routine inspection in number of weeks}&lt;/FirstRoutine&gt;
+      &lt;RoutineDuration&gt;{Regular routine inspection period in number of weeks}&lt;/RoutineDuration&gt;
+   &lt;/Inspection&gt;
+
+   <h3 id="arrear_tag"> &nbsp; </h3>
    &lt;!-- Arrear tag contains arrear sms/email/phone call/letter action informations done in ourtradie --&gt;
    &lt;Arrear&gt;
       &lt;Type&gt;{SMS / EMAIL / CALL / LETTER}&lt;/Type&gt;
