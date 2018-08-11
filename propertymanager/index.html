@@ -44,12 +44,12 @@
 	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
 	  <li><strong>Methods</strong></li>
 	  <li><a href="#syncproperties" class="cc-active">SyncProperties</a></li>
-      <li><a href="#jobsretrieve" class="cc-active">JobsRetrieve</a></li>
-      <li><a href="#updatejobs" class="cc-active">UpdateJobs</a></li>
+      <li><a href="#retrievecompleted" class="cc-active">RetrieveCompleted</a></li>
+      <li><a href="#updateimported" class="cc-active">UpdateImported</a></li>
 	  <li><strong>Downloads</strong></li>
 	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
 	  <li><a href="#syncproperties-xml" class="cc-active">SyncProperties XML Format</a></li>
-	  <li><a href="#jobsretrieve-xml" class="cc-active">JobsRetrieve XML Format</a></li>
+	  <li><a href="#retrievecompleted-xml" class="cc-active">RetrieveCompleted XML Format</a></li>
     </ul>
     <div class="docs-content">
       <h2> Getting Started</h2>
@@ -206,10 +206,23 @@
 	  <h3 id="syncproperties"> Import Agency Datas to OurTradie</h3>
 	  <ul style="list-style:outside none none">
 		<li> Using this method you could import all your agency property managers, properties, tenants, landlords & creditors to ourtradie. On the first import you should
-			pass all your properties & userdetails to ourtradie. After that send only modified properties or creditor informations. </li>
-		<li> Also you could send daily property statistics datas like rent, paid to, lease start, lease end, vacating date, rent arrear days, arrear amount. Using this details we
-			will send arrear notifications to tenants. </li>
-		<li> In this method you should pass datas as xml string or xml file. Please refer <a href="#syncproperties-xml">below details</a> for XML format.</li>
+			pass all your properties & userdetails to ourtradie. After that send only modified properties or creditor informations. 
+			<br/> Click <a href="#property_export_tag">here</a> to check format of <strong>Property</strong> Information tag 
+			<br/> Click <a href="#creditor_export_tag">here</a> to check format of <strong>Creditor</strong> Information tag 
+			<br/><br/>
+		</li>
+		<li> Also you could send daily <strong>Property Statistics</strong> datas like rent, paid to, lease start, lease end, vacating date, rent arrear days, arrear amount. Using this details we
+			will send arrear notifications to tenants. 
+			<br/> Click <a href="#property_statistics_tag">here</a> to check format of <strong>Property Statistics</strong> tag 
+			<br/><br/>
+		</li>
+
+		<li> You could send <strong>Property Inspection</strong> data to ourtradie. Using ourtradie PM Inpsect mobile app, you can complete inspections perfectly.
+			<br/> Click <a href="#property_inspection_tag">here</a> to check format of <strong>Property Inspections</strong> tag 
+			<br/><br/>
+		</li>
+
+		<li> In this method you should pass datas as xml string or xml file. Please refer complete <a href="#syncproperties-xml">below details</a> for XML format.</li>
 		<li class="method-tbl">
 			<table>
 				<tr>
@@ -253,7 +266,7 @@
 		</li>
 	  </ul>	
       
-	  <h3 id="jobsretrieve"> Retrieve datas from ourtradie</h3>
+	  <h3 id="retrievecompleted"> Retrieve completed datas from ourtradie</h3>
 	  <ul style="list-style:outside none none">
 		<li> Using this method, user can retrieve property maintenance jobs, completed inspections and arrear notifications sent to tenants/landlords on a day. Get all
 			above infos as a xml string from this method.</li>
@@ -281,7 +294,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
 			<table>
 				<tr>
 					<td class="method">GET</td>
-					<td class="endpoint"><pre class="url"><code>/api/JobsRetrieve</code></pre></td>
+					<td class="endpoint"><pre class="url"><code>/api/RetrieveCompleted</code></pre></td>
 				</tr>
 			</table>
 		</li>
@@ -297,21 +310,21 @@ managers using our website / mobile Inspection apps. Those completed inspections
 				<tbody>
 					<tr><td>Parameter</td><td>Description</td></tr>
 					<tr><td>success</td><td>OK</td></tr>
-					<tr><td>data</td><td>XML string data contains job & other infos. Please refer this <a href="#jobsretrieve-xml">link</a> for XML format.</td></tr>
+					<tr><td>data</td><td>XML string data contains job & other infos. Please refer this <a href="#retrievecompleted-xml">link</a> for XML format.</td></tr>
 				</tbody>
 			</table>
 		</li>
 	  </ul>	
 
-	  <h3 id="updatejobs"> Send imported jobs & arrear actions</h3>
+	  <h3 id="updateimported"> Send imported jobs & arrear actions</h3>
 	  <ul style="list-style:outside none none">
-		<li> Import jobs & arrear actions to your agency software received from JobsRetrieve method. Send Job IDs, arrear ids of successfully imported jobs on your side. </li>
+		<li> Import jobs & arrear actions to your agency software received from RetrieveCompleted method. Send Job IDs, arrear ids of successfully imported jobs on your side. </li>
 		<li> We will mark those jobs & arrear actions as imported on agency software and prevent those details again sending on retrieve method.</li>
 		<li class="method-tbl">
 			<table>
 				<tr>
 					<td class="method">POST</td>
-					<td class="endpoint"><pre class="url"><code>/api/UpdateJobs</code></pre></td>
+					<td class="endpoint"><pre class="url"><code>/api/UpdateImported</code></pre></td>
 				</tr>
 			</table>
 		</li>
@@ -356,6 +369,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
 	  <pre class="prettyprint">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;root&gt;
+   <h3 id="property_export_tag"> &nbsp; </h3>
    &lt;!-- Managements tag contains property, property manager, owner and tenant details.--&gt;
    &lt;Managements&gt;
       &lt;!-- Management tag contains property details.--&gt;
@@ -425,7 +439,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
       &lt;/Management&gt;
    &lt;/Managements&gt;
 
-
+   <h3 id="creditor_export_tag"> &nbsp; </h3>
    &lt;!-- Creditors tag contains all tradie details.--&gt;
    &lt;Creditors&gt;
       &lt;Creditor&gt;
@@ -449,7 +463,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
       &lt;/Creditor&gt;
    &lt;/Creditors&gt;
 
-
+   <h3 id="paidjobs_export_tag"> &nbsp; </h3>
    &lt;!-- This contains jobs imported from ourtradie and invoice paid/processed in trustsystem.--&gt;
    &lt;PaidJobs&gt;
       &lt;Job&gt;
@@ -465,7 +479,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
       &lt;/Job&gt;
    &lt;/PaidJobs&gt;
 
-
+   <h3 id="property_statistics_tag"> &nbsp; </h3>
    &lt;!-- Property &amp; tenant extra informations .--&gt;
    &lt;PropertyStatistics&gt;
       &lt;PropertyStatistic&gt;
@@ -490,6 +504,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
       &lt;/PropertyStatistic&gt;
    &lt;/PropertyStatistics&gt;
 
+   <h3 id="property_inspection_tag"> &nbsp; </h3>
    &lt;!-- Property inspection informations .--&gt;
    &lt;Inspecs&gt;
       &lt;Inspec&gt;
@@ -634,7 +649,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
 &lt;/root&gt;
 	  </pre>
 
-	  <h3 id="jobsretrieve-xml"> JobsRetrieve response XML structure</h3>
+	  <h3 id="retrievecompleted-xml"> RetrieveCompleted response XML structure</h3>
 	  <ul>
 		<li class="arial">Here all dates are in this format - yyyy-mm-dd H:i:s (ex: 2016-07-29 05:20:29)</li>
       </ul>
@@ -718,7 +733,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
    <h3 id="confirmedjob_tag"> &nbsp; </h3>
    &lt;!-- Each ConfirmedJob tag contains ourtradie tradie confirmed Job informations to import on Trust Systems --&gt;
    &lt;!-- All date fields must be in the format  yyyy-mm-dd H:i:s--&gt;
-   	&lt;ConfirmedJob&gt;
+   &lt;ConfirmedJob&gt;
       &lt;UserRef&gt;{PM Reference/Unique Code}&lt;/UserRef&gt;
       &lt;TenantRef&gt;{Tenant Reference/Unique Code}&lt;/TenantRef&gt;
       &lt;OwnerRef&gt;{Owner Reference/Unique Code}&lt;/OwnerRef&gt;
@@ -784,7 +799,7 @@ managers using our website / mobile Inspection apps. Those completed inspections
       &lt;AdvertisingDebit&gt;0&lt;/AdvertisingDebit&gt;
       &lt;Audit&gt;0&lt;/Audit&gt;
       &lt;AttachmentFileID&gt;42&lt;/AttachmentFileID&gt;
-	&lt;/ConfirmedJob&gt;
+   &lt;/ConfirmedJob&gt;
 
    <h3 id="creditor_tag"> &nbsp; </h3>
    &lt;!-- Job completed creditor was not mapped in trust system, he was our registered creditor means, Creditor tag is available to update in trust system --&gt;
