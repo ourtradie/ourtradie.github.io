@@ -42,6 +42,7 @@
       <li><a href="#access_token" class="cc-active">Access Token</a></li>
 	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
 	  <li><strong>Methods</strong></li>
+	  <li><a href="#tradiecreatenewjob" class="cc-active">Tradie Create New Job</a></li>
 	  <li><a href="#tradiejobaccept" class="cc-active">Tradie Job Accept</a></li>
       <li><a href="#tradiejobreject" class="cc-active">Tradie Job Reject</a></li>
 	  <li><a href="#tradiejobschedule" class="cc-active">Tradie Job Schedule</a></li>
@@ -74,6 +75,8 @@
 	  <li><a href="#tradiequoteacceptcancel" class="cc-active">Tradie Quote Accept Cancel</a></li>
 	  <li><strong>Downloads</strong></li>
 	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
+	  <li><strong>Extra infos.</strong></li>
+	  <li><a href="#trade-types" class="cc-active">Job Trade List</a></li>
     </ul>
     <div class="docs-content">
       <h2> Getting Started</h2>
@@ -238,6 +241,63 @@
 			</table>
 		</li>
 	  </ul>	
+
+		
+	  <h3 id="tradiecreatenewjob"> Tradie Create New Job</h3>
+	  <ul style="list-style:outside none none">
+	  		 		<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieCreateNewJob</code></pre></td>
+				</tr>
+				</table>
+				</li>
+		<strong>Purpose:</strong> <br/>
+				<p> Creating a new job using api. Here you need to send Property Owner contact details & property informations to create a new job. </p>
+		
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>FirstName</td><td>Owner firstname.</td><td>Yes</td></tr>
+					<tr><td>LastName</td><td>Owner lastname.</td><td>Yes</td></tr>
+					<tr><td>Salutation</td><td>Owner salutation.</td><td>Yes</td></tr>
+					<tr><td>EmailAddress</td><td>Owner mail id.</td><td>Yes</td></tr>
+					<tr><td>PhoneNo</td><td>Owner phone no.</td><td></td></tr>
+					<tr><td>Mobile</td><td>Owner mobile no.</td><td>Yes</td></tr>
+					<tr><td>Street</td><td>Property street address.</td><td>Yes</td></tr>
+					<tr><td>City</td><td>Property suburb</td><td>Yes</td></tr>
+					<tr><td>State</td><td>Property State in short code. <br> (ACT / NSW / NT / QLD / SA / TAS / VIC / WA) </td><td>Yes</td></tr>
+					<tr><td>Postcode</td><td>Property postcode</td><td>Yes</td></tr>
+					<tr><td>ServiceRequired</td><td> Job trade type. Send type from this <a href="#trade-types">list</a>. </td><td>Yes</td></tr>
+					<tr><td>JobName</td><td> Job name </td><td>Yes</td></tr>
+					<tr><td>Comments</td><td> Job description/comments </td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>New job created  successfully.</td></tr>
+				</tbody>
+			</table>
+			<span>Failed Response</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error message. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+		
+	  </ul>
 
 	  <h3 id="tradiejobaccept"> Tradie Job Accept</h3>
 	  <ul style="list-style:outside none none">
@@ -1389,7 +1449,92 @@
 			</li>
 			<li> API URL: <a href="http://tradie.ourtradie.com.au/api/index.php">http://tradie.ourtradie.com.au/api/</a></li>
 		</ul>
-			
+
+		<h3 id="trade-types"> Job Trade List</h3>
+		<ul class="arial">
+			<li>
+				<h2 class="title">List of available trades</h2>
+				<table class="resource">
+					<tbody>
+						<tr><td>Type</td><td>Description</td></tr>
+						<tr><td>air_conditioning</td><td>Airconditioning</td></tr>
+						<tr><td>asbestos_removal</td><td>Asbestos removal</td></tr>
+						<tr><td>brake_clutch_services</td><td>Auto Brake & Clutch mechanic</td></tr>
+						<tr><td>auto_electrical_services</td><td>Auto Electrician</td></tr>
+						<tr><td>bathroom_renovations</td><td>Bathroom renovations</td></tr>
+						<tr><td>blinds_and_shades</td><td>Blinds & Shades</td></tr>
+						<tr><td>bookkeeping</td><td>Bookkeeping</td></tr>
+						<tr><td>bricklayers</td><td>Building Bricklayer</td></tr>
+						<tr><td>carpenters</td><td>Building Carpenters</td></tr>
+						<tr><td>carports</td><td>Building Carports patios & pergolas</td></tr>
+						<tr><td>decking_construction</td><td>Building Decking & construction</td></tr>
+						<tr><td>building_general</td><td>Building General</td></tr>
+						<tr><td>home_renovation_services</td><td>Building renovations</td></tr>
+						<tr><td>wardrobes_installation</td><td>Building Wardrobes</td></tr>
+						<tr><td>car_truck_cleaning</td><td>Car wash</td></tr>
+						<tr><td>furniture_cleaning</td><td>Cleaning Carpet & Furniture</td></tr>
+						<tr><td>cleaning_services</td><td>Cleaning Domestic</td></tr>
+						<tr><td>concrete</td><td>Concreting</td></tr>
+						<tr><td>couriers</td><td>Couriers</td></tr>
+						<tr><td>excavating_contractors</td><td>Earth moving</td></tr>
+						<tr><td>electrical_appliances_services</td><td>Electrical Appliances</td></tr>
+						<tr><td>burglar_alarm_systems</td><td>Electrical Burglar Alarms</td></tr>
+						<tr><td>solar_energy_equipment</td><td>Electrical Solar</td></tr>
+						<tr><td>service_parts_repairs</td><td>Electrical Washers & dryers</td></tr>
+						<tr><td>electrician</td><td>Electricians</td></tr>
+						<tr><td>fencing_contractors</td><td>Fencing</td></tr>
+						<tr><td>general_coverings</td><td>Floor Coverings</td></tr>
+						<tr><td>floor_polishing_recoating_services</td><td>Floor Polishing</td></tr>
+						<tr><td>furniture_storage</td><td>Furniture Storage & Removals</td></tr>
+						<tr><td>gardening_services</td><td>Gardener</td></tr>
+						<tr><td>glaziers</td><td>Glass</td></tr>
+						<tr><td>graphic_design</td><td>Graphic design</td></tr>
+						<tr><td>home_repairs</td><td>Handyman</td></tr>
+						<tr><td>insulation_supply</td><td>Insulation</td></tr>
+						<tr><td>interior_designer</td><td>Interior Decorator</td></tr>
+						<tr><td>kitchens_renovations</td><td>Kitchens renovations</td></tr>
+						<tr><td>locksmith_services</td><td>Locksmith</td></tr>
+						<tr><td>shutters_installation</td><td>Louvres & Shutters</td></tr>
+						<tr><td>garden_maintenance</td><td>Mowing</td></tr>
+						<tr><td>decorating_services</td><td>Painters</td></tr>
+						<tr><td>pest_control</td><td>Pest controller</td></tr>
+						<tr><td>pets_grooming</td><td>Pet care</td></tr>
+						<tr><td>plasterers</td><td>Plasterer</td></tr>
+						<tr><td>drainage_services</td><td>Plumbing Drainage</td></tr>
+						<tr><td>plumbers</td><td>Plumbing General</td></tr>
+						<tr><td>roof_maintenance</td><td>Plumbing Roof Repairs</td></tr>
+						<tr><td>swimmingpool_maintenance</td><td>Pool Maintenance</td></tr>
+						<tr><td>refrigeration</td><td>Refrigeration</td></tr>
+						<tr><td>roller_doors_shutters</td><td>Garage Doors Shutters & Grilles</td></tr>
+						<tr><td>tilers</td><td>Tiler</td></tr>
+						<tr><td>gutters</td><td>Gutter cleaning</td></tr>
+						<tr><td>tree_lopper</td><td>Tree lopper</td></tr>
+						<tr><td>fire_protection</td><td>Fire Protection</td></tr>
+						<tr><td>safety_inspector</td><td>Safety inspector</td></tr>
+						<tr><td>fridge_seal_repairers</td><td>Fridge seal repairers</td></tr>
+						<tr><td>antenna_installer</td><td>Antenna installer</td></tr>
+						<tr><td>plumbing_gas</td><td>Plumbing Gas</td></tr>
+						<tr><td>plumbing_hw_systems</td><td>Plumbing H/W Systems</td></tr>
+						<tr><td>engineers</td><td>Engineers</td></tr>
+						<tr><td>smoke_alarm_tester</td><td>Smoke alarms</td></tr>
+						<tr><td>photographer</td><td>Photographer</td></tr>
+						<tr><td>pool_compliance</td><td>Pool Compliance</td></tr>
+						<tr><td>cleaning_mould</td><td>Cleaning Mould</td></tr>
+						<tr><td>water_filters</td><td>Water Filters</td></tr>
+						<tr><td>valuer</td><td>Valuer</td></tr>
+						<tr><td>reticulation</td><td>Reticulation</td></tr>
+						<tr><td>security_screens</td><td>Security Screens</td></tr>
+						<tr><td>inspections_building</td><td>Inspections Building</td></tr>
+						<tr><td>inspections_pest</td><td>Inspections Pest</td></tr>
+						<tr><td>fencing_temporary</td><td>Fencing Temporary</td></tr>
+						<tr><td>surveyor</td><td>Surveyor</td></tr>
+						<tr><td>building_pest_inspections</td><td>Building & pest Inspections</td></tr>
+						<tr><td>house_washing</td><td>House washing/pressure cleaning</td></tr>
+						<tr><td>prime_contractor</td><td>Private Contractor</td></tr>
+					</tbody>
+				</table>
+			</li>
+		</ul>
     </div>
 	
   </div>
