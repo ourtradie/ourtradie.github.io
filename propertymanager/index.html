@@ -358,8 +358,8 @@ managers using our website / mobile Inspection apps. Those completed inspections
 			You can access it from this <a href="https://github.com/ourtradie/PM-API-Client-Library">link</a>. Also it contains syncProperties call sample code. For testing purpose
 			you can access below urls to checking api calls.
 		</li>
-		<li> Test PM site URL: <a href="https://uat.ourtradie.com.au/propertymanager/">http://uat.ourtradie.com.au/propertymanager/</a></li>
-		<li> Test API URL: <a href="https://uat.ourtradie.com.au/manager/api/index.php">http://uat.ourtradie.com.au/manager/api/</a></li>
+		<li> Test PM site URL: <a href="https://demo-propertymanager.ourtradie.com.au/">https://demo-propertymanager.ourtradie.com.au/</a></li>
+		<li> Test API URL: <a href="https://demo-manager.ourtradie.com.au/api/index.php">https://demo-manager.ourtradie.com.au/api/</a></li>
 		<li> Live API URL: <a href="https://manager.ourtradie.com.au/api/index.php">https://manager.ourtradie.com.au/api/</a></li>
       </ul>
 
@@ -602,6 +602,40 @@ managers using our website / mobile Inspection apps. Those completed inspections
          &lt;Modified&gt;{Invoice details modified date}&lt;/Modified&gt;
       &lt;/Invoice&gt;
    &lt;/TenantInvoices&gt;
+
+
+   &lt;!-- Tenant Lease records --&gt;
+   &lt;TenantLease&gt; 
+      &lt;Lease&gt;
+         &lt;TRef&gt;{Tenant Reference/Unique Code}&lt;/TRef&gt;
+         &lt;PRef&gt;{Property Reference/Unique Code}&lt;/PRef&gt;
+         &lt;PID&gt;{Property ID in your system}&lt;/PID&gt;
+         &lt;TID&gt;{Tenant ID in your system}&lt;/TID&gt;
+         &lt;lease_first_start&gt;{Lease first start date}&lt;/lease_first_start&gt;
+         &lt;lease_start&gt;{Lease start date}&lt;/lease_start&gt;
+         &lt;lease_end&gt;{Lease end date}&lt;/&gt;
+         &lt;lease_terminate /&gt;
+         &lt;lease_break /&gt;
+         &lt;vacant_date&gt;0000-00-00 00:00:00&lt;/vacant_date&gt;
+         &lt;bank_code&gt;2343&lt;/bank_code&gt;
+         &lt;direct_debit&gt;1&lt;/direct_debit&gt;
+         &lt;gst&gt;True&lt;/gst&gt;
+         &lt;letfee_amount&gt;0&lt;/letfee_amount&gt;
+         &lt;rebate&gt;0&lt;/rebate&gt;
+         &lt;bond_required&gt;820&lt;/bond_required&gt;
+         &lt;bond_received&gt;820&lt;/bond_received&gt;
+         &lt;bond_reference&gt;2479464-3&lt;/bond_reference&gt;
+         &lt;rent&gt;280&lt;/rent&gt;
+         &lt;last_paid&gt;2018-10-18 00:00:00&lt;/last_paid&gt;
+         &lt;paid_to&gt;2018-10-24 00:00:00&lt;/paid_to&gt;
+         &lt;lease_term&gt;&lt;/lease_term&gt;
+         &lt;rent_review&gt;0000-00-00 00:00:00&lt;/rent_review&gt;
+         &lt;next_rent_date&gt;&lt;/next_rent_date&gt;
+         &lt;Period&gt;weekly&lt;/Period&gt;
+         &lt;letfee_type&gt;Number of Weeks&lt;/letfee_type&gt;
+         &lt;tenantpayswater&gt;no&lt;/tenantpayswater&gt;
+      &lt;/Lease&gt;
+   &lt;/TenantLease&gt;
 
 
    &lt;!-- Send imported ourtradie maintenance jobs invoice processed date, to update job processed date in ourtradie --&gt;
