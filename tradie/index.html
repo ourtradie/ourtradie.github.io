@@ -42,6 +42,7 @@
       <li><a href="#access_token" class="cc-active">Access Token</a></li>
 	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
 	  <li><strong>Methods</strong></li>
+	  <li><a href="#tradiejobretrieve" class="cc-active">Tradie Job Retrieve</a></li>
 	  <li><a href="#tradiecreatenewjob" class="cc-active">Tradie Create New Job</a></li>
 	  <li><a href="#tradiejobaccept" class="cc-active">Tradie Job Accept</a></li>
       <li><a href="#tradiejobreject" class="cc-active">Tradie Job Reject</a></li>
@@ -241,6 +242,69 @@
 			</table>
 		</li>
 	  </ul>	
+
+	<h3 id="tradiejobretrieve"> Tradie Job Retrieve</h3>
+	<ul style="list-style:outside none none">
+			<li class="method-tbl">
+		<table>
+			<tr>
+				<td class="method">POST</td>
+				<td class="endpoint"><pre class="url"><code>/api/TradieJobRetrieve</code></pre></td>
+			</tr>
+		</table>
+		</li>
+		<strong>Purpose:</strong> <br/>
+		<p>Retrieving a job using api.  </p>		
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>ID</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>Status</td><td>Status of the jobs.</td><td>No</td></tr>
+					<tr><td>Since</td><td>Retrieve the jobs which is start > Since</td><td>No</td></tr>
+					<tr><td>Skip</td><td>No. of Records to be skipped</td><td>No</td></tr>
+					<tr><td>Count</td><td>No.of Records to be retrieved</td><td>No</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>ID</td><td>Job Id</td></tr>
+					<tr><td>Title</td><td>Job Title</td></tr>
+					<tr><td>Type</td><td>General Type</td></tr>
+					<tr><td>JobType</td><td>Job Type</td></tr>
+					<tr><td>Description</td><td>Job Description</td></tr>
+					<tr><td>StartDate</td><td>Start date of a job</td></tr>
+					<tr><td>EndDate</td><td>End date of a job</td></tr>
+					<tr><td>Status</td><td>Job status</td></tr>
+					<tr><td>Notes</td><td>Job notes</td></tr>
+					<tr><td>Documents</td><td>Documents of a Job</td></tr>
+					<tr><td>Media</td><td>Media</td></tr>
+					<tr><td>Trade</td><td>Trade</td></tr>
+					<tr><td>Property</td><td>Property Details</td></tr>
+					<tr><td>ApprovedStart</td><td>ApprovedStart</td></tr>
+					<tr><td>Creditor</td><td>Creditor Details</td></tr>
+					<tr><td>InvoiceDescription</td><td>Invoice Description</td></tr>
+					<tr><td>InvoiceNumber</td><td>Invoice Number</td></tr>
+					<tr><td>JobNumber</td><td>Job Number</td></tr>
+					<tr><td>Related</td><td>Related</td></tr>
+					<tr><td>Contract</td><td>Job Agreement</td></tr>
+				</tbody>
+			</table>
+			<span>Failed Response</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error message. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	</ul>
 
 		
 	  <h3 id="tradiecreatenewjob"> Tradie Create New Job</h3>
