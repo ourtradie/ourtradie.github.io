@@ -1,0 +1,1449 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OurTradie Smart Devices API</title>
+    <link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
+    <link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/prettify.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <nav>
+
+            <div class="pull-left">
+                <h1><a href="javascript:"><img src="img/icon.png" alt="OurTradie Smart Devices API" /> <span></span></a></h1>
+            </div>
+
+            <div class="pull-right" style="display:none">
+            </div>
+
+        </nav>
+        <header>
+            <div class="container">
+                <h2 class="lone-header">OurTradie Smart Devices API</h2>
+            </div>
+        </header>
+        <section>
+            <div class="container">
+                <ul class="docs-nav">
+                    <li><strong>Getting Started</strong></li>
+                    <li><a href="#welcome" class="cc-active">Welcome</a></li>
+                    <li><a href="#overview" class="cc-active">Overview</a></li>
+                    <li class="separator"></li>
+                    <li><strong>API Reference</strong></li>
+                    <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
+                    <li><a href="#authorization" class="cc-active">Authorization</a></li>
+                    <li><a href="#access_token" class="cc-active">Access Token</a></li>
+                    <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
+                    <li><strong>Methods</strong></li>
+                    <li><a href="#CustList01" class="cc-active">CustList01</a></li>
+                    <li><a href="#Renter01" class="cc-active">Renter01</a></li>
+                    <li><a href="#Renter02" class="cc-active">Renter02</a></li>
+                    <li><a href="#Renter03" class="cc-active">Renter03</a></li>
+                    <li><a href="#Renter05" class="cc-active">Renter05</a></li>
+                    <li><a href="#Agency01" class="cc-active">Agency01</a></li>
+                    <li><a href="#Agency02" class="cc-active">Agency02</a></li>
+                    <li><a href="#Agency03" class="cc-active">Agency03</a></li>
+                    <li><a href="#Agency05" class="cc-active">Agency05</a></li>
+                    <li><a href="#Property11" class="cc-active">Property11</a></li>
+                    <li><a href="#Property12" class="cc-active">Property12</a></li>
+                    <li><a href="#Agency04" class="cc-active">Agency04</a></li>
+                    <li><a href="#Property200" class="cc-active">Property200</a></li>
+                    <li><a href="#Agency200" class="cc-active">Agency200</a></li>
+                </ul>
+                <div class="docs-content">
+                    <h2> Getting Started</h2>
+                    <h3 id="welcome"> Welcome</h3>
+                    <p> OurTradie provides solutions for online tradesmen and property managers.
+                        It doesn't really matter what type of work or service you are selling or buying on the
+                        Internet: from building
+                        to electrical work and even dog grooming services. This program will help both tradies and
+                        their customers
+                        feel empowered and choose the best options to suit their business purposes. We help tradies,
+                        property managers,
+                        tenants and landlords work through maintenance tasks more efficiently together. </p>
+
+                    <h3 id="overview"> Overview</h3>
+                    <ul>
+                        <li><strong>Import your properties:</strong> Export your property, tradie, landlord and tenant
+                            information from your property management software and import it into OurTradie using our
+                            API.</li>
+                        <li><strong>Create profile:</strong> Add your Property management group and your staff.</li>
+                        <li><strong>Create a job:</strong> Send a job to a tradie as a unquoted work offer or request
+                            quotes from your tradies. If you don’t have three tradies of the same type available, send
+                            the job out through the OurTradie network to access other qualified tradies. The first
+                            three tradies who respond get to quote.</li>
+                        <li><strong>Review & Selection:</strong> Review the response, approve a quote or pass on the
+                            selected quotes on to the landlord for approval</li>
+                        <li><strong>Import jobs to your software:</strong> Through our API can retrieve approved job
+                            invoices as XML data and import into your software.</li>
+                    </ul>
+
+                    <h2> API Reference</h2>
+                    <h3 id="getting_access"> Getting Access</h3>
+                    <ul>
+                        <li>To access PM API, <a href="https://propertymanager.ourtradie.com.au/index.php?option=com_jentlausers&amp;view=jentlauser&amp;show=register&amp;id=2434&amp;Itemid=167">complete
+                                your user account as office manager</a>.</li>
+                        <li>After you have created your account, sign in to <a href="https://propertymanager.ourtradie.com.au">pm
+                                assistant site</a> generate your api access via <strong>Settings &gt; API Access</strong></li>
+                        <img src="img/API_Access.png" alt="API Access" style="max-width: 800px;margin-top: 10px;" />
+                        <li>You must provide valid url in Redirect URL field, api responses will be sent to redirect
+                            url.</li>
+                        <li>Press Generate New Key button to get your client id & client secret key.</li>
+                    </ul>
+
+                    <h3 id="authorization"> Request an authorization code</h3>
+                    <ul style="list-style:outside none none">
+                        <li> We are using <strong style="font-family:arial;">OAuth 2.0 </strong> for api authorization
+                            process.</li>
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">GET</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/authorize</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>response_type</td>
+                                        <td>The value of this field should always be:&nbsp; code</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>client_id</td>
+                                        <td>The "Client Id" value generated in ourtradie.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>authorize</td>
+                                        <td>An integer value should be pass.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>redirect_uri</td>
+                                        <td>
+                                            <p>The URI your responses will be sent back to after authorization.&nbsp;
+                                                This value must match with redirect url you specified on api access.
+                                        </td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>state</td>
+                                        <td>
+                                            <p>A unique string value of your choice that is
+                                                hard to guess. Used to prevent <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery"
+                                                    rel="nofollow" target="_blank">CSRF</a>.&nbsp;
+                                                <br> e.g. state=DCEeFWf45A53sdfKef424</p>
+                                        </td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li> <strong>Sample Request Url:</strong> </li>
+                        <li class="arial">
+                            https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz
+                        </li>
+                        <li> While calling above url, you asked to login with your office manager account on api. Then
+                            you will see api authorization page.</li>
+                        <li> <img src="img/authorization_pg.png" alt="API Authorization" style="margin-top: 10px;" />
+                        </li>
+                        <li> Press Authorize button, you will get following authorization code response on your
+                            redirect url.</li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>code</td>
+                                        <td>Authorization code from OAuth 2.0 endpoint.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>state</td>
+                                        <td>The unique string value you passed on request.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="access_token"> Getting access token</h3>
+                    <ul style="list-style:outside none none">
+                        <li> Pass authorization code to Token method to get api access token.</li>
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">GET</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/token</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>code</td>
+                                        <td>Use the code got from authorize method.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>client_id</td>
+                                        <td>The "Client Id" value generated in ourtradie.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>client_secret</td>
+                                        <td>The "Client Secret" value generated in ourtradie.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>grant_type</td>
+                                        <td>While using authorization code to get token, value should always be:&nbsp;
+                                            authorization_code</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>access_token</td>
+                                        <td>Accesstoken generated from OAuth 2.0 endpoint.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>expires_in</td>
+                                        <td>Token expiration time in minutes.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>token_type</td>
+                                        <td>Type of OAuth generated token.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>refresh_token</td>
+                                        <td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired,
+                                            Use this to get new access token. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="refresh_token"> Using refresh token to get access token</h3>
+                    <ul style="list-style:outside none none">
+                        <li> Pass refresh token instead of authorization code to Token method to obtain api access
+                            token.</li>
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">GET</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/token</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>refresh_token</td>
+                                        <td>Use the refresh_token previously got.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>client_id</td>
+                                        <td>The "Client Id" value generated in ourtradie.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>client_secret</td>
+                                        <td>The "Client Secret" value generated in ourtradie.</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>grant_type</td>
+                                        <td>While using refresh token to get token, value should always be:&nbsp;
+                                            refresh_token</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>access_token</td>
+                                        <td>Accesstoken generated from OAuth 2.0 endpoint.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>expires_in</td>
+                                        <td>Token expiration time in minutes.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>token_type</td>
+                                        <td>Type of OAuth generated token.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>refresh_token</td>
+                                        <td>Accesstoken generated from OAuth 2.0 endpoint. Once access token expired,
+                                            Use this to get new access token. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="CustList01"> Customer List</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/CustList01</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Listing customers using api. </p>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyNumber</td>
+                                        <td>Customer Number (ID).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyName</td>
+                                        <td>Name of the Customer.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>InternalID</td>
+                                        <td>Unique code of the Customer.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PhoneNumber</td>
+                                        <td>Customer Contact Number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                    <h3 id="Renter01">Renter's Detail By Email</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Renter01</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Tenant's Detail by Email using api</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>Tenant's Email</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RenterId</td>
+                                        <td>Tenant Number (ID).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyAddress</td>
+                                        <td>Address of the Tenant.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RenterName</td>
+                                        <td>Name of the Tenant.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyName</td>
+                                        <td>Name of the Agency.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Renter02">Renter's Detail By Mobile Number</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Renter02</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Tenant's Detail by Mobile Number using api</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Number</td>
+                                        <td>Tenant's Mobile Number</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RenterId</td>
+                                        <td>Tenant Number (ID).</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyAddress</td>
+                                        <td>Address of the Tenant.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RenterName</td>
+                                        <td>Name of the Tenant.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyName</td>
+                                        <td>Name of the Agency.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Renter03">Renter's Rental Detail</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Renter03</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Tenant's Rental Detail using api</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RentDue</td>
+                                        <td>Rent Due Amount.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RentDateDue</td>
+                                        <td>Rent Due Date.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>RentStatus</td>
+                                        <td>Rent Status.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Frequency</td>
+                                        <td>Rent Frequency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Renter05">Renter's Contract Detail</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Renter05</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Tenant's Contract Detail using api</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ContractTerm</td>
+                                        <td>Contract Term Period.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>MoveInDate</td>
+                                        <td>Contract Start Date.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>NotificationPeriod</td>
+                                        <td>Notification Period.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>EndDate</td>
+                                        <td>Contract End Date.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Agency01">Agency Prefered Plumber</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency01</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Agency Prefered Plumber using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CompanyName</td>
+                                        <td>Name of the Plumbing Company.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonName</td>
+                                        <td>Tradie Name.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonEmail</td>
+                                        <td>Tradie Email.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonMobile</td>
+                                        <td>Tradie Mobile Number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+                    <h3 id="Agency02">Agency Prefered Electrician</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency02</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Agency Prefered Electrician using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CompanyName</td>
+                                        <td>Name of the Electrician Company.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonName</td>
+                                        <td>Tradie Name.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonEmail</td>
+                                        <td>Tradie Email.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonMobile</td>
+                                        <td>Tradie Mobile Number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Agency03">Agency Prefered HandyMan</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency03</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Agency Prefered HandyMan using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CompanyName</td>
+                                        <td>Name of the HandyMan Company.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonName</td>
+                                        <td>Tradie Name.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonEmail</td>
+                                        <td>Tradie Email.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonMobile</td>
+                                        <td>Tradie Mobile Number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Agency05">Agency Prefered LockSmith</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency05</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Agency Prefered LockSmith using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>CompanyName</td>
+                                        <td>Name of the LockSmith Company.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonName</td>
+                                        <td>Tradie Name.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonEmail</td>
+                                        <td>Tradie Email.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PersonMobile</td>
+                                        <td>Tradie Mobile Number.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Property11">Property Manager Contact Details</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Property11</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Property Manager Contact Details using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name</td>
+                                        <td>Name of the Property Manager.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>Email of the Property Manager.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OfficePhone</td>
+                                        <td>Property Manger's Phone Number.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OfficeLocationAddress</td>
+                                        <td>Property Manger's Office Location Address.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Property12">Bond Detail</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Property12</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Bond Detail using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PaidAmount</td>
+                                        <td>Bond Paid Amount.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Agency04">Agency Office Details</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency04</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Retrieve Agency's Detail.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                    <tr>
+                                        <td>PropertyRef</td>
+                                        <td>Unique Code of the Property.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>AgencyInternalID</td>
+                                        <td>Unique Code of the Agency.</td>
+                                    </tr>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address</td>
+                                        <td>Address of the Agency.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OfficeName</td>
+                                        <td>Agency Office Name.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone</td>
+                                        <td>Mobile Number of the Agency.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>Email of the Agency.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OperatingHours</td>
+                                        <td>Working Hours of the Agency.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Property200">Property Conversation Log</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Property200</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Save Property Conversation Log using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>Tenant's Email</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Log Transcript</td>
+                                        <td>Log Data</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Save Response</td>
+                                        <td>True/False</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                    <h3 id="Agency200">Agency Log</h3>
+                    <ul style="list-style:outside none none">
+                        <li class="method-tbl">
+                            <table>
+                                <tr>
+                                    <td class="method">POST</td>
+                                    <td class="endpoint">
+                                        <pre class="url"><code>/api/Agency200</code></pre>
+                                    </td>
+                                </tr>
+                            </table>
+                        </li>
+                        <strong>Purpose:</strong> <br />
+                        <p>Save Agency Log using api.</p>
+                        <li>
+                            <h2 class="title">Request Params</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                        <td>Required</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td>Agency's Email</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Log Transcript</td>
+                                        <td>Log Data</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                        <li>
+                            <h2 class="title">Response data</h2>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Save Response</td>
+                                        <td>True/False</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <span>Failed Response</span>
+                            <table class="resource">
+                                <tbody>
+                                    <tr>
+                                        <td>Parameter</td>
+                                        <td>Description</td>
+                                    </tr>
+                                    <tr>
+                                        <td>error</td>
+                                        <td>If api call failed, will get error message. </td>
+                                    </tr>
+                                    <tr>
+                                        <td>error_description</td>
+                                        <td>Failed response description will obtain this field. </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+        <section class="vibrant centered">
+            <div class="">
+                <h4> This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a>.</h4>
+            </div>
+        </section>
+        <footer>
+            <div class="">
+                <p> &copy; OurTradie Pty. Ltd.</p>
+            </div>
+        </footer>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/prettify/prettify.js"></script>
+    <script src="js/jquery-scrolltofixed-min.js"></script>
+    <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=sunburst"></script>
+    <script src="js/layout.js"></script>
+</body>
+
+</html>
