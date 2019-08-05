@@ -42,6 +42,7 @@
       <li><a href="#access_token" class="cc-active">Access Token</a></li>
 	  <li><a href="#refresh_token" class="cc-active">Refresh Token</a></li>
 	  <li><strong>Methods</strong></li>
+  	  <li><a href="#getAgencies" class="cc-active">Get Agencies</a></li>
 	  <li><a href="#getallresidentialproperties" class="cc-active">Get All Residential Properties</a></li>
 	  <li><a href="#tradiejobretrieve" class="cc-active">Tradie Job Retrieve</a></li>
 	  <li><a href="#tradiecreatenewjob" class="cc-active">Tradie Create New Job</a></li>
@@ -243,7 +244,47 @@
 			</table>
 		</li>
 	  </ul>	
-
+	<h3 id="getAgencies"> Get Agencies</h3>
+	<ul style="list-style:outside none none">
+			<li class="method-tbl">
+		<table>
+			<tr>
+				<td class="method">GET</td>
+				<td class="endpoint"><pre class="url"><code>/api/GetAgencies</code></pre></td>
+			</tr>
+		</table>
+		</li>
+		<strong>Purpose:</strong> <br/>
+		<p>Retrieving Agencies using api.  </p>		
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>	
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>			
+					<tr><td>Skip</td><td>No. of Records to be skipped</td><td>No</td></tr>
+					<tr><td>Count</td><td>No.of Records to be retrieved</td><td>No</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>AgencyID</td><td>Agency Id</td></tr>
+					<tr><td>AgencyName</td><td>Agent's Company Name</td></tr>
+				</tbody>
+			</table>
+			<span>Failed Response</span>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>error</td><td>If api call failed, will get error message. </td></tr>
+					<tr><td>error_description</td><td>Failed response description will obtain this field. </td></tr>
+				</tbody>
+			</table>
+		</li>
+	</ul>
 	<h3 id="getallresidentialproperties"> Get All Residential Properties</h3>
 	<ul style="list-style:outside none none">
 			<li class="method-tbl">
