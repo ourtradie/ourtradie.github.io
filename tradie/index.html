@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="description" content="tradie api">
+<meta name="description" content="">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
 <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -36,6 +36,11 @@
       <li><a href="#welcome" class="cc-active">Welcome</a></li>
       <li><a href="#overview" class="cc-active">Overview</a></li>
       <li class="separator"></li>
+      <li><strong>Webhook Reference</strong></li>
+      <li><a href="#webhook_getting_access" class="cc-active">Getting Access</a></li>
+      <li><a href="#webhook_job_status_change" class="cc-active">Job Status Change</a></li>
+      <li><a href="#webhook_favourite_tradie_change" class="cc-active">Favourite Tradie Change</a></li>
+      <li class="separator"></li>	  
       <li><strong>API Reference</strong></li>
       <li><a href="#getting_access" class="cc-active">Getting Access</a></li>
       <li><a href="#authorization" class="cc-active">Authorization</a></li>
@@ -110,6 +115,45 @@
 		<li><strong>Serviced:</strong> When the service job has been completed.</li>
 		
       </ul>
+
+	  <h2> Webhook Reference</h2>
+      <h3 id="webhook_getting_access"> Getting Access</h3>
+      <ul>
+		<li>To gain access to webhooks, simply sign in to the Tradie portal and input your webhook URLs on <strong>Settings &gt; Webhooks</strong></li>
+ 		<img src="img/Webhook_Access.png" alt="Webhook Access" style="max-width: 950px;margin-top: 10px;" />
+		<li>You must provide valid url in Notify URL field, webhook notifications will be sent to Notify url as post json data.</li>
+		<li>Currently, we support two types of webhook listening:</li>
+			<ul>
+				<li>Job Status Change Alert</li>
+				<li>Favourite Tradie Change Alert</li>
+			</ul>
+      </ul>
+
+	  <h3 id="webhook_job_status_change"> Job Status Change</h3>
+      <ul>
+		<li>Whenever a job associated with your tradie account undergoes a status update, the webhook will be triggered, providing the following information payload:</li>
+		<pre>
+{
+	"JobID": {job_id},
+	"NewJob": 0, // IF new job it will be 1 otherwise 0
+	"Status": "{job_status}",
+	"UserID": {user_id}
+}
+		</pre>
+      </ul>
+	
+	  <h3 id="webhook_favourite_tradie_change"> Favourite Tradie Change</h3>
+      <ul>
+		<li>Whenever your status as a favorite tradie is altered by an agency, the webhook will be triggered, offering the following information payload: </li>
+		<pre>
+{
+	"ID": {user_id}, // Who added/removed from Favourite.
+	"Email": {user_email},
+	"Group": "{user_type}"
+}
+		</pre>
+      </ul>
+
 
 	  <h2> API Reference</h2>
       <h3 id="getting_access"> Getting Access</h3>
