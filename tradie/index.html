@@ -81,6 +81,7 @@
 	  <li><a href="#tradiequoteretractcancel" class="cc-active">Tradie Quote Retract Cancel</a></li>
 	  <li><a href="#tradiequoterejectcancel" class="cc-active">Tradie Quote Reject Cancel</a></li>
 	  <li><a href="#tradiequoteacceptcancel" class="cc-active">Tradie Quote Accept Cancel</a></li>
+	  <li><a href="#tradiepropertycompliancesubmit" class="cc-active">TradiePropertyComplianceSubmit</a></li>
 	  <li><strong>Downloads</strong></li>
 	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
 	  <li><strong>Extra infos.</strong></li>
@@ -1615,7 +1616,7 @@
 			</ul>
 	  <h3 id="tradiequoteacceptcancel"> Tradie Quote Accept Cancel</h3>
 	  <ul style="list-style:outside none none">
-	  		 		<li class="method-tbl">
+	  	<li class="method-tbl">
 			<table>
 				<tr>
 					<td class="method">POST</td>
@@ -1647,7 +1648,70 @@
 			<strong>Note:</strong> <br/>
 			<p> Accepts the job on Cancelled Quote status. </p>				
 		</li>
-		</ul>
+	  </ul>
+
+	  <h3 id="tradiepropertycompliancesubmit">Tradie Property Compliance Submit  </h3>
+	  <ul style="list-style:outside none none">
+	  	<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradiePropertyComplianceSubmit</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> This method is used to submit property compliance date & certificate. Can submit multiple type of compliances at one request.
+
+			</p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>PropertyId</td><td>Property Id</td><td>Yes</td></tr>
+					<tr><td>Compliance</td><td>Array format of data contains all kind of compliance JobID & Date </td><td>Yes</td></tr>
+					<tr><td>Documents</td><td>Array format of files list </td><td>Yes</td></tr>
+					</tbody>
+			</table>
+		</li>
+		<list>
+			<h2 class="title">Request Sample:</h2>
+			<pre>
+POST data
+{
+	'PropertyID' => AAAAAA,
+	'Compliance[Smoke][JobID]' => XXXXXX,
+	'Compliance[Smoke][Date]' => '2025-03-28 08:30:00',
+	'Compliance[Gas][JobID]' => YYYYYY,
+	'Compliance[Gas][Date]' => '2025-04-25 08:30:00',
+	'Compliance[Electric][JobID]' => ZZZZZZZ,
+	'Compliance[Electric][Date]' => '2025-04-25 08:30:00',
+}
+
+Files 
+{
+	'Documents' => {
+		'Smoke' => fileObject (pdf),
+		'Gas' => fileObject (pdf),
+		'Electric' => fileObject (pdf)
+	}
+}
+			</pre>
+		</list>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Complicance submitted Successfully.</td></tr>
+				</tbody>
+			</table>
+			<strong>Note:</strong> <br/>
+			<p> Have to bring & valid respective compliance JobIDs. Job will be processed & certificate pushed to OP document manager. </p>				
+		</li>
+	  </ul>
 
 		<h3 id="client-library"> Client side API access library file</h3>
 		<ul class="arial">
