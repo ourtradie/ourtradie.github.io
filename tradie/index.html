@@ -1692,7 +1692,10 @@ POST data
 Files 
 {
 	'Documents' => {
-		'Smoke' => fileObject (pdf),
+		'Smoke' => [
+		            fileObject (pdf),
+		            fileObject (pdf),
+		          ],
 		'Gas' => fileObject (pdf),
 		'Electric' => fileObject (pdf)
 	}
@@ -1709,7 +1712,7 @@ Files
 				</tbody>
 			</table>
 			<strong>Note:</strong> <br/>
-			<p> Have to bring & valid respective compliance JobIDs. Job will be processed & certificate pushed to OP document manager. </p>				
+			<p> Have to bring & valid respective compliance JobIDs. Job will be processed & certificate pushed to OP document manager. This method support single / multiple file upload for each types.</p>				
 		</li>
 	  </ul>
 
