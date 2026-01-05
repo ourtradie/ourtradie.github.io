@@ -1,118 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Ourtradie API Pages</title>
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="OurTradie API Documentation - Property Manager, Tradie, and Smart Devices APIs"/>
+  <title>OurTradie API Documentation</title>
+  <link href="css/style.css" rel="stylesheet"/>
 </head>
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="img/icon.png" alt="OurTradie Tradie API"></a>
-      <ul class="right hide-on-med-and-down">
-		<li><a href="http://ourtradie.com.au">OurTradie.com.au</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="side-nav">
+  <nav role="navigation">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">
+        <img src="img/icon.png" alt="OurTradie API">
+        <span>OurTradie API</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
         <li><a href="http://ourtradie.com.au">OurTradie.com.au</a></li>
       </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
   </nav>
-  <div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-      <br><br>
-      <h1 class="header center orange-text">OurTradie API Documentation Links</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">Property Manager API Documentation</h5>
-      </div>
-      <div class="row center">
-        <a href="https://ourtradie.github.io/propertymanager" id="download-button" class="btn-large waves-effect waves-light red">Get Started</a>
-      </div>
 
-		<div class="row center">
-		 <h5 class="header col s12 light">Tradie API Documentation</h5>
-      </div>
-      <div class="row center">
-        <a href="https://ourtradie.github.io/tradie" id="download-button" class="btn-large waves-effect waves-light green">Get Started</a>
-      </div>
-
-      <div class="row center">
-     <h5 class="header col s12 light">Smart Devices API Documentation</h5>
-      </div>
-      <div class="row center">
-        <a href="https://ourtradie.github.io/smartdevices" id="download-button" class="btn-large waves-effect waves-light blue">Get Started</a>
-      </div>
-
-      <br><br>
-
+  <div class="hero">
+    <div class="hero-content">
+      <h1>OurTradie API Documentation</h1>
+      <p>Comprehensive APIs for property managers, tradies, and smart device integrations</p>
     </div>
   </div>
 
-
-  <div class="container">
-    <div class="section">
-
-      <!--   Icon Section   -->
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about our API.</p>
-          </div>
-        </div>
-      </div>
-
+  <div class="api-cards">
+    <div class="api-card pm">
+      <div class="api-card-icon">PM</div>
+      <h3>Property Manager API</h3>
+      <p>Import and export property data, manage maintenance jobs, inspections, and arrear notifications. Seamlessly integrate with your property management software.</p>
+      <a href="https://ourtradie.github.io/propertymanager" class="btn">Get Started →</a>
     </div>
-    <br><br>
 
-    <div class="section">
+    <div class="api-card tradie">
+      <div class="api-card-icon">T</div>
+      <h3>Tradie API</h3>
+      <p>Manage jobs, quotes, invoices, and scheduling. Complete job lifecycle management with webhook support for real-time updates.</p>
+      <a href="https://ourtradie.github.io/tradie" class="btn">Get Started →</a>
+    </div>
 
+    <div class="api-card smartdevices">
+      <div class="api-card-icon">SD</div>
+      <h3>Smart Devices API</h3>
+      <p>Integrate smart devices with OurTradie platform. Manage customer data, renters, agencies, and property information.</p>
+      <a href="https://ourtradie.github.io/smartdevices" class="btn">Get Started →</a>
     </div>
   </div>
 
-  <footer class="page-footer orange">
+  <div class="features">
     <div class="container">
-      <div class="row center">
-        This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a>.
+      <h2 style="text-align: center; margin-bottom: 1rem;">Why Choose Our APIs?</h2>
+      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">Powerful, flexible, and developer-friendly APIs built for modern applications</p>
+      
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h5>Fast & Reliable</h5>
+          <p>Optimized for performance with comprehensive error handling and robust infrastructure</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">👥</div>
+          <h5>Developer Focused</h5>
+          <p>Clear documentation, code examples, and client libraries to accelerate your integration</p>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">🔧</div>
+          <h5>Easy Integration</h5>
+          <p>RESTful APIs with OAuth 2.0 authentication. Well-documented endpoints with XML and JSON support</p>
+        </div>
       </div>
     </div>
-    <div class="footer-copyright">
-      <div class="container center">
-      <p> &copy; OurTradie Pty. Ltd.</p>
-      </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>This API documentation is provided by <a href="https://ourtradie.com.au" target="_blank">OurTradie</a></p>
+      <p style="margin-top: 1rem; font-size: 0.9rem;">&copy; OurTradie Pty. Ltd.</p>
     </div>
   </footer>
 
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-
-  </body>
+</body>
 </html>
