@@ -1,37 +1,30 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="">
+<meta name="description" content="OurTradie Tradie API Documentation - Complete job lifecycle management for tradies">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
-<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>OurTradie Tradie API</title>
-<link rel="alternate" type="application/rss+xml" title="frittt.com" href="feed/index.html">
-<link href="http://fonts.googleapis.com/css?family=Raleway:700,300" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OurTradie Tradie API Documentation</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/prettify.css">
 </head>
 <body>
 <div class="wrapper">
+<button class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Toggle navigation" style="display: none;">☰</button>
 <nav>
- 
-  	<div class="pull-left">
-    	<h1><a href="javascript:"><img src="img/icon.png" alt="OurTradie Tradie API" /> <span></span></a></h1>
-    </div>
-    
-    <div class="pull-right" style="display:none">
-    </div>
-
-</nav>
-<header>
-  <div class="container">
-    <h2 class="lone-header">OurTradie Tradie API</h2>
+  <div class="pull-left">
+    <h1><a href="../index.html" style="text-decoration: none; color: inherit;"><img src="img/icon.png" alt="OurTradie Tradie API" /> <span>OurTradie Tradie API</span></a></h1>
   </div>
-</header>
+</nav>
 <section>
   <div class="container">
     <ul class="docs-nav">
+      <li class="sidebar-header">
+        <h2 class="lone-header">OurTradie Tradie API</h2>
+      </li>
+      <li class="separator"></li>
       <li><strong>Getting Started</strong></li>
       <li><a href="#welcome" class="cc-active">Welcome</a></li>
       <li><a href="#overview" class="cc-active">Overview</a></li>
@@ -100,30 +93,59 @@
       
       <h3 id="overview"> Overview</h3>
 	  <h4> OurTradie job states </h4>
-      <ul>
-        <li><strong>Offer:</strong> When the job has been offered by the customer.</li>
-		<li><strong>Quote:</strong> When the job is waiting for the tradie to quote.</li>
-		<li><strong>Accept:</strong> When the job is accepted by the tradie.</li>
-		<li><strong>Investigate:</strong> When the job is accepted but not dates are set.</li>
-		<li><strong>Quoted:</strong>  When the tradie has quoted the job.</li>
-		<li><strong>Approved:</strong> When the job has been approved by the customer.</li>
-		<li><strong>Active:</strong> When the job is in the Active job list for the tradie..</li>
-		<li><strong>Future::</strong>  Like Active but at a date in the future.</li>
-		<li><strong>Completed::</strong> When the job has been invoiced by the tradie.</li>
-		<li><strong>Finalised:</strong> When the submitted invoice is approved by the Property Manager (Customer).</li>
-		<li><strong>Payment:</strong> When the job has been paid by the customer.</li>
-		<li><strong>Reconciled:</strong> When the payment has been detected by the tradie and the tradie has marked it as Reconciled..</li>
-		<li><strong>Rejected:</strong> When the job has been rejected by the customer. Same as Disputed.</li>
-		<li><strong>Cancelled:</strong> When the job is cancelled.</li>
-		<li><strong>Serviced:</strong> When the service job has been completed.</li>
-		
-      </ul>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1.5em 0;">
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Offer:</strong> When the job has been offered by the customer.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Quote:</strong> When the job is waiting for the tradie to quote.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Accept:</strong> When the job is accepted by the tradie.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Investigate:</strong> When the job is accepted but not dates are set.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Quoted:</strong> When the tradie has quoted the job.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Approved:</strong> When the job has been approved by the customer.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Active:</strong> When the job is in the Active job list for the tradie.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Future:</strong> Like Active but at a date in the future.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Completed:</strong> When the job has been invoiced by the tradie.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Finalised:</strong> When the submitted invoice is approved by the Property Manager (Customer).
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Payment:</strong> When the job has been paid by the customer.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Reconciled:</strong> When the payment has been detected by the tradie and the tradie has marked it as Reconciled.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Rejected:</strong> When the job has been rejected by the customer. Same as Disputed.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Cancelled:</strong> When the job is cancelled.
+        </div>
+        <div style="background: var(--bg-secondary); padding: 1rem; border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+          <strong>Serviced:</strong> When the service job has been completed.
+        </div>
+      </div>
 
 	  <h2> Webhook Reference</h2>
       <h3 id="webhook_getting_access"> Getting Access</h3>
       <ul>
 		<li>To gain access to webhooks, simply sign in to the Tradie portal and input your webhook URLs on <strong>Settings &gt; Webhooks</strong></li>
- 		<img src="img/Webhook_Access.png" alt="Webhook Access" style="max-width: 950px;margin-top: 10px;" />
+ 		<img src="img/Webhook_Access.png" alt="Webhook Access" style="max-width: 100%;margin-top: 10px;border-radius: 0.5rem;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 		<li>You must provide valid url in Notify URL field, webhook notifications will be sent to Notify url as post json data.</li>
 		<li>Currently, we support two types of webhook listening:</li>
 			<ul>
@@ -135,26 +157,22 @@
 	  <h3 id="webhook_job_status_change"> Job Status Change</h3>
       <ul>
 		<li>Whenever a job associated with your tradie account undergoes a status update, the webhook will be triggered, providing the following information payload:</li>
-		<pre>
-{
+		<pre class="prettyprint"><code>{
 	"JobID": {job_id},
 	"NewJob": 0, // IF new job it will be 1 otherwise 0
 	"Status": "{job_status}",
 	"UserID": {user_id}
-}
-		</pre>
+}</code></pre>
       </ul>
 	
 	  <h3 id="webhook_favourite_tradie_change"> Favourite Tradie Change</h3>
       <ul>
 		<li>Whenever your status as a favorite tradie is altered by an agency, the webhook will be triggered, offering the following information payload: </li>
-		<pre>
-{
+		<pre class="prettyprint"><code>{
 	"ID": {user_id}, // Who added/removed from Favourite.
 	"Email": {user_email},
 	"Group": "{user_type}"
-}
-		</pre>
+}</code></pre>
       </ul>
 
 
@@ -163,7 +181,7 @@
       <ul>
 		<li>To access PM API, <a href="https://tradie.ourtradie.com.au/index.php?option=com_jentlausers&view=jentlauser&show=register&id=1129&Itemid=149">complete your user account either as tradiemanager / soletradie</a>.</li>
         <li>After you have created your account, sign in to <a href="https://tradie.ourtradie.com.au">Tradie site</a> generate your api access via <strong>Settings &gt; API Access</strong></li>
-		<img src="img/API_Access.png" alt="API Access" style="max-width: 800px;margin-top: 10px;" />
+		<img src="img/API_Access.png" alt="API Access" style="max-width: 100%;margin-top: 10px;border-radius: 0.5rem;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" />
 		<li>You must provide valid url in Redirect URL field, api responses will be sent to redirect url.</li>
 		<li>Press Generate New Key button to get your client id & client secret key.</li>
       </ul>
@@ -202,9 +220,9 @@
 			</table>
 		</li>
 		<li> <strong>Sample Request Url:</strong> </li>
-		<li class="arial"> https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz </li>
+		<li class="arial"> <code style="background: var(--bg-tertiary); padding: 0.5rem 1rem; border-radius: 0.25rem; display: inline-block; word-break: break-all;">https://{API_URL}/api/authorize?response_type=code&authorize=1&state=xxxxx&client_id=yyyyyyyy&redirect_uri=zzzz</code> </li>
 		<li> While calling above url, you asked to login with your office manager account on api. Then you will see api authorization page.</li>
-		<li> <img src="img/authorization_pg.png" alt="API Authorization" style="margin-top: 10px;" /> </li>
+		<li> <img src="img/authorization_pg.png" alt="API Authorization" style="max-width: 100%;margin-top: 10px;border-radius: 0.5rem;box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" /> </li>
 		<li> Press Authorize button, you will get following authorization code response on your redirect url.</li>
 		<li>
 			<h2 class="title">Response data</h2>
@@ -1677,10 +1695,9 @@
 					</tbody>
 			</table>
 		</li>
-		<list>
+		<li>
 			<h2 class="title">Request Sample:</h2>
-			<pre>
-POST data
+			<pre class="prettyprint"><code>POST data
 {
 	'PropertyID' => AAAAAA,
 	'Compliance[Smoke][JobID]' => XXXXXX,
@@ -1701,9 +1718,8 @@ Files
 		'Gas' => fileObject (pdf),
 		'Electric' => fileObject (pdf)
 	}
-}
-			</pre>
-		</list>
+}</code></pre>
+		</li>
 		<li>
 			<h2 class="title">Response data</h2>
 			<table class="resource">
@@ -2011,7 +2027,14 @@ Files
 <script src="js/jquery.min.js"></script> 
 <script type="text/javascript" src="js/prettify/prettify.js"></script> 
 <script src="js/jquery-scrolltofixed-min.js"></script>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=css&skin=sunburst"></script>
 <script src="js/layout.js"></script>
+<script>
+// Initialize prettify after page load
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof prettyPrint !== 'undefined') {
+        prettyPrint();
+    }
+});
+</script>
 </body>
 </html>
