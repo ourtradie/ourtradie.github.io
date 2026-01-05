@@ -82,6 +82,8 @@
 	  <li><a href="#tradiequoterejectcancel" class="cc-active">Tradie Quote Reject Cancel</a></li>
 	  <li><a href="#tradiequoteacceptcancel" class="cc-active">Tradie Quote Accept Cancel</a></li>
 	  <li><a href="#tradiepropertycompliancesubmit" class="cc-active">TradiePropertyComplianceSubmit</a></li>
+	  <li><a href="#tradiesubmitcompliance" class="cc-active">TradieSubmitCompliance</a></li>
+	  <li><a href="#tradieupdateduedate" class="cc-active">TradieUpdateDueDate</a></li>
 	  <li><strong>Downloads</strong></li>
 	  <li><a href="#client-library" class="cc-active">Client Library</a></li>
 	  <li><strong>Extra infos.</strong></li>
@@ -1716,6 +1718,78 @@ Files
 		</li>
 	  </ul>
 
+	  <h3 id="tradiesubmitcompliance">TradieSubmitCompliance</h3>
+	  <ul style="list-style:outside none none">
+	  	<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieSubmitCompliance</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> This method is used to complete inspection job.
+
+			</p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Complicance submitted Successfully.</td></tr>
+				</tbody>
+			</table>
+		</li>
+	  </ul>
+
+	  <h3 id="tradieupdateduedate">TradieUpdateDueDate</h3>
+	  <ul style="list-style:outside none none">
+	  	<li class="method-tbl">
+			<table>
+				<tr>
+					<td class="method">POST</td>
+					<td class="endpoint"><pre class="url"><code>/api/TradieUpdateDueDate</code></pre></td>
+				</tr>
+			</table>
+		</li>
+		<strong>Purpose:</strong>
+			<p> This method is used to update job due date.</p>
+		<li>
+			<h2 class="title">Request Params</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td><td>Required</td></tr>
+					<tr><td>Id</td><td>Job Id</td><td>Yes</td></tr>
+					<tr><td>StartDate</td><td>Job Start Date (dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+					<tr><td>DeadLine</td><td>Job Due Date (dd-mm-yyyy hh:mm:ss)</td><td>Yes</td></tr>
+				</tbody>
+			</table>
+		</li>
+		<li>
+			<h2 class="title">Response data</h2>
+			<table class="resource">
+				<tbody>
+					<tr><td>Parameter</td><td>Description</td></tr>
+					<tr><td>Success</td><td>Ok</td></tr>
+					<tr><td>data</td><td>Job updated Successfully.</td></tr>
+				</tbody>
+			</table>
+			<strong>Note:</strong> <br/>
+			<p> Whether the job is created by your account only can change / update due dates.</p>				
+		</li>
+	  </ul>
+
 		<h3 id="client-library"> Client side API access library file</h3>
 		<ul class="arial">
 			<li>As we created client side api access library in PHP with CURL. You can refer & user this to make api requests. Client api file was hosted in git repository.
@@ -1733,8 +1807,6 @@ Files
 						<tr><td>Type</td><td>Description</td></tr>
 						<tr><td>air_conditioning</td><td>Airconditioning</td></tr>
 						<tr><td>asbestos_removal</td><td>Asbestos removal</td></tr>
-						<tr><td>brake_clutch_services</td><td>Auto Brake & Clutch mechanic</td></tr>
-						<tr><td>auto_electrical_services</td><td>Auto Electrician</td></tr>
 						<tr><td>bathroom_renovations</td><td>Bathroom renovations</td></tr>
 						<tr><td>blinds_and_shades</td><td>Blinds & Shades</td></tr>
 						<tr><td>bookkeeping</td><td>Bookkeeping</td></tr>
@@ -1745,7 +1817,6 @@ Files
 						<tr><td>building_general</td><td>Building General</td></tr>
 						<tr><td>home_renovation_services</td><td>Building renovations</td></tr>
 						<tr><td>wardrobes_installation</td><td>Building Wardrobes</td></tr>
-						<tr><td>car_truck_cleaning</td><td>Car wash</td></tr>
 						<tr><td>furniture_cleaning</td><td>Cleaning Carpet & Furniture</td></tr>
 						<tr><td>cleaning_services</td><td>Cleaning Domestic</td></tr>
 						<tr><td>concrete</td><td>Concreting</td></tr>
@@ -1772,7 +1843,6 @@ Files
 						<tr><td>garden_maintenance</td><td>Mowing</td></tr>
 						<tr><td>decorating_services</td><td>Painters</td></tr>
 						<tr><td>pest_control</td><td>Pest controller</td></tr>
-						<tr><td>pets_grooming</td><td>Pet care</td></tr>
 						<tr><td>plasterers</td><td>Plasterer</td></tr>
 						<tr><td>drainage_services</td><td>Plumbing Drainage</td></tr>
 						<tr><td>plumbers</td><td>Plumbing General</td></tr>
@@ -1781,16 +1851,17 @@ Files
 						<tr><td>refrigeration</td><td>Refrigeration</td></tr>
 						<tr><td>roller_doors_shutters</td><td>Garage Doors Shutters & Grilles</td></tr>
 						<tr><td>tilers</td><td>Tiler</td></tr>
-						<tr><td>gutters</td><td>Gutter cleaning</td></tr>
+						<tr><td>gutters</td><td>Gutters</td></tr>
 						<tr><td>tree_lopper</td><td>Tree lopper</td></tr>
-						<tr><td>fire_protection</td><td>Fire Protection</td></tr>
+						<tr><td>smoke_alarm_tester</td><td>Smoke alarm tester</td></tr>
 						<tr><td>safety_inspector</td><td>Safety inspector</td></tr>
 						<tr><td>fridge_seal_repairers</td><td>Fridge seal repairers</td></tr>
 						<tr><td>antenna_installer</td><td>Antenna installer</td></tr>
 						<tr><td>plumbing_gas</td><td>Plumbing Gas</td></tr>
+						<tr><td>fire_protection</td><td>Fire Protection</td></tr>
 						<tr><td>plumbing_hw_systems</td><td>Plumbing H/W Systems</td></tr>
 						<tr><td>engineers</td><td>Engineers</td></tr>
-						<tr><td>smoke_alarm_tester</td><td>Smoke alarms</td></tr>
+						<tr><td>rubbish_removal</td><td>Rubbish Removal</td></tr>
 						<tr><td>photographer</td><td>Photographer</td></tr>
 						<tr><td>pool_compliance</td><td>Pool Compliance</td></tr>
 						<tr><td>cleaning_mould</td><td>Cleaning Mould</td></tr>
@@ -1800,11 +1871,124 @@ Files
 						<tr><td>security_screens</td><td>Security Screens</td></tr>
 						<tr><td>inspections_building</td><td>Inspections Building</td></tr>
 						<tr><td>inspections_pest</td><td>Inspections Pest</td></tr>
-						<tr><td>fencing_temporary</td><td>Fencing Temporary</td></tr>
 						<tr><td>surveyor</td><td>Surveyor</td></tr>
+						<tr><td>fencing_temporary</td><td>Fencing Temporary</td></tr>
 						<tr><td>building_pest_inspections</td><td>Building & pest Inspections</td></tr>
 						<tr><td>house_washing</td><td>House washing/pressure cleaning</td></tr>
 						<tr><td>prime_contractor</td><td>Private Contractor</td></tr>
+						<tr><td>hvac_systems</td><td>HVAC Systems</td></tr>
+						<tr><td>electrical_hw_systems</td><td>Electrical H/W Systems</td></tr>
+						<tr><td>surface_repairs</td><td>Surface Repairs</td></tr>
+						<tr><td>cleaning_ovens_cooktops</td><td>Cleaning Ovens & Cooktops</td></tr>
+						<tr><td>building_steel_erection_welding</td><td>Building Steel Erection & Welding</td></tr>
+						<tr><td>gas_leak_detection</td><td>Gas Leak Detection</td></tr>
+						<tr><td>removalist</td><td>Removalist</td></tr>
+						<tr><td>electrical_thermographic_scanning</td><td>Electrical Thermographic Scanning</td></tr>
+						<tr><td>electrical_appliances_services_lic</td><td>Electrical Appliances Licensed</td></tr>
+						<tr><td>cleaning_tile_grout</td><td>Cleaning Tile & Grout</td></tr>
+						<tr><td>turf_supply_installation</td><td>Turf supply & Installation</td></tr>
+						<tr><td>photographer_aerial</td><td>Photographer Aerial</td></tr>
+						<tr><td>aerated_wastewater_treatment</td><td>Aerated Wastewater Treatment</td></tr>
+						<tr><td>blind_Cleaning_repairs</td><td>Blind Cleaning & Repairs</td></tr>
+						<tr><td>access_control_systems</td><td>Access Control Systems</td></tr>
+						<tr><td>glass_leadlight</td><td>Glass Leadlight</td></tr>
+						<tr><td>building_strip_outs</td><td>Building Strip Outs</td></tr>
+						<tr><td>grass_tinting</td><td>Glass Tinting</td></tr>
+						<tr><td>water_leak_detection</td><td>Water Leak Detection</td></tr>
+						<tr><td>hydronic_heating_system</td><td>Hydronic Heating Systems</td></tr>
+						<tr><td>window_hung</td><td>Window Sash/Double hung</td></tr>
+						<tr><td>elevators_lifts</td><td>Elevators and Lifts</td></tr>
+						<tr><td>electrical_ovens_stoves</td><td>Electrical Ovens & Stoves</td></tr>
+						<tr><td>cleaning_solar_panels</td><td>Cleaning Solar Panels</td></tr>
+						<tr><td>fireplace_wood</td><td>Fireplace – Wood</td></tr>
+						<tr><td>fireplace_electric</td><td>Fireplace – Electric</td></tr>
+						<tr><td>fireplace_gas</td><td>Fireplace – Gas</td></tr>
+						<tr><td>water_efficiency_testing</td><td>Water Efficiency Testing</td></tr>
+						<tr><td>airconditioning_cleaning</td><td>Airconditioning Cleaning</td></tr>
+						<tr><td>disinfection_commercial</td><td>Disinfection - Commercial</td></tr>
+						<tr><td>disinfection_residential</td><td>Disinfection – Residential</td></tr>
+						<tr><td>graffiti_removal</td><td>Graffiti Removal</td></tr>
+						<tr><td>cabinet_maker</td><td>Cabinet Maker</td></tr>
+						<tr><td>home_automation</td><td>Home Automation</td></tr>
+						<tr><td>ducted_vacuum_systems</td><td>Ducted Vacuum Systems</td></tr>
+						<tr><td>cctv_instal_repair</td><td>CCTV Instal and Repair</td></tr>
+						<tr><td>window_curtains</td><td>Window Curtains</td></tr>
+						<tr><td>water_tank_maintenance</td><td>Water Tank Maintenance</td></tr>
+						<tr><td>water_tank_cleaning</td><td>Water Tank Cleaning</td></tr>
+						<tr><td>tile_grouting_silicone</td><td>Tile Grouting / Silicone</td></tr>
+						<tr><td>audio_visual_systems</td><td>Audio Visual Systems</td></tr>
+						<tr><td>property_condition_reports</td><td>Property Condition Reports</td></tr>
+						<tr><td>building_pool_fencing</td><td>Building Pool Fencing</td></tr>
+						<tr><td>building_doors</td><td>Building Doors</td></tr>
+						<tr><td>termite_control</td><td>Termite Control</td></tr>
+						<tr><td>photo_signboards</td><td>Photo Signboards</td></tr>
+						<tr><td>septic_tank_maintenance</td><td>Septic Tank Maintenance</td></tr>
+						<tr><td>blinds_compliance</td><td>Blinds Compliance</td></tr>
+						<tr><td>gutter_repair</td><td>Gutter Repair/Gutter Replacement</td></tr>
+						<tr><td>rooftarping_two</td><td>Roof Tarping – Two Storey</td></tr>
+						<tr><td>rooftarping_single</td><td>Roof Tarping – Single Storey</td></tr>
+						<tr><td>window_cleaning</td><td>Window Cleaning</td></tr>
+						<tr><td>electric_gates</td><td>Electric Gates</td></tr>
+						<tr><td>stone_benchtop_repairs</td><td>Stone Benchtop Repairs</td></tr>
+						<tr><td>marble_polish_repair</td><td>Marble Polish & Repair</td></tr>
+						<tr><td>council</td><td>Council</td></tr>
+						<tr><td>doors_automatic</td><td>Doors Automatic</td></tr>
+						<tr><td>cleaning_commercial</td><td>Cleaning Commercial</td></tr>
+						<tr><td>sanitary_services</td><td>Sanitary Services</td></tr>
+						<tr><td>landscaper</td><td>Landscaper</td></tr>
+						<tr><td>ventilation</td><td>Ventilation</td></tr>
+						<tr><td>damp_proofing</td><td>Damp Proofing</td></tr>
+						<tr><td>plumbing_gas_safety_check</td><td>Plumbing Gas Safety Check</td></tr>
+						<tr><td>electrical_safety_check</td><td>Electrical Safety Check</td></tr>
+						<tr><td>audits</td><td>Minimum Standards Audits</td></tr>
+						<tr><td>telephone_internet</td><td>Telephone/Internet</td></tr>
+						<tr><td>intercom_systems</td><td>Intercom systems</td></tr>
+						<tr><td>plumber_gas_heating</td><td>Plumber Gas Heating</td></tr>
+						<tr><td>pool_heating</td><td>Pool Heating</td></tr>
+						<tr><td>fire_restoration</td><td>Fire Restoration</td></tr>
+						<tr><td>key_cutting</td><td>Key Cutting</td></tr>
+						<tr><td>asbestos_Inspections_testing</td><td>Asbestos Inspections & Testing</td></tr>
+						<tr><td>meth_residue_testing</td><td>Meth Residue Testing</td></tr>
+						<tr><td>cleaning_trauma</td><td>Cleaning Trauma</td></tr>
+						<tr><td>chimney_sweeps</td><td>Chimney Sweeps</td></tr>
+						<tr><td>duct_cleaning</td><td>Duct Cleaning</td></tr>
+						<tr><td>quantity_surveyor</td><td>Quantity Surveyor</td></tr>
+						<tr><td>insurance</td><td>Insurance</td></tr>
+						<tr><td>bird_control</td><td>Bird Control</td></tr>
+						<tr><td>waterproofer</td><td>Waterproofer</td></tr>
+						<tr><td>digital_data_cabling</td><td>Digital Data/Cabling</td></tr>
+						<tr><td>rat_control</td><td>Rat Control</td></tr>
+						<tr><td>possum_catcher</td><td>Possum Catcher</td></tr>
+						<tr><td>spring_cleans</td><td>Spring Cleans</td></tr>
+						<tr><td>sale_cleans</td><td>Sale Cleans</td></tr>
+						<tr><td>renovation_cleans</td><td>Renovation Cleans</td></tr>
+						<tr><td>builders_cleans</td><td>Builders Cleans</td></tr>
+						<tr><td>bond_cleans</td><td>Bond Cleans</td></tr>
+						<tr><td>septic_tank_cleaning</td><td>Septic Tank Cleaning</td></tr>
+						<tr><td>mirrors</td><td>Mirrors</td></tr>
+						<tr><td>window_grilles</td><td>Window Grilles</td></tr>
+						<tr><td>roller_shutters</td><td>Roller Shutters</td></tr>
+						<tr><td>pool_leak</td><td>Leak Detection – Water/Gas</td></tr>
+						<tr><td>roof_repair</td><td>Roof Repair & Restoration</td></tr>
+						<tr><td>flood_repairs</td><td>Flood Repairs</td></tr>
+						<tr><td>window_covering</td><td>Corded/window covering compliance</td></tr>
+						<tr><td>flyscreen</td><td>Flyscreens or Insect screens</td></tr>
+						<tr><td>shower_screen</td><td>Shower screens</td></tr>
+						<tr><td>water_pumps</td><td>Water Pumps</td></tr>
+						<tr><td>skylights</td><td>Skylights</td></tr>
+						<tr><td>electrical_ev_charger</td><td>Electrical EV Charger Installs</td></tr>
+						<tr><td>tree_stump_removal</td><td>Tree Stump Removal</td></tr>
+						<tr><td>building_foundation_repair</td><td>Building Foundation Repair</td></tr>
+						<tr><td>building_cracked_wall_repair</td><td>Building Cracked Wall Repair</td></tr>
+						<tr><td>window_shutters</td><td>Window Shutters</td></tr>
+						<tr><td>window_specialist</td><td>Window Specialist</td></tr>
+						<tr><td>door_specialist</td><td>Door Specialist</td></tr>
+						<tr><td>animal_control</td><td>Animal Control</td></tr>
+						<tr><td>snake_catcher</td><td>Snake Catcher</td></tr>
+						<tr><td>carpets</td><td>Carpets</td></tr>
+						<tr><td>ele_new_appliance_Installer</td><td>Electrical New Appliance Installer</td></tr>
+						<tr><td>pool_construction_renovation</td><td>Pool Construction & Renovation</td></tr>
+						<tr><td>insurance_restoration</td><td>Insurance Restoration</td></tr>
 					</tbody>
 				</table>
 			</li>
